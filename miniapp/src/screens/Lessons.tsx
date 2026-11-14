@@ -1,7 +1,6 @@
 import { isLessonUnlocked } from "../../shared/actions.ts";
 import { LESSONS } from "../content/lessons";
-import { guideById } from "../content/guides";
-import { Empty, Img, Progress, SectionHead, TopBar } from "../components/ui";
+import { Img, Progress, SectionHead, TopBar } from "../components/ui";
 import { IconChevron, IconLock } from "../components/Icons";
 import { useUserState } from "../store/appStore";
 import { isOwned, lessonsProgress } from "../store/selectors";
@@ -9,7 +8,6 @@ import { navigate } from "../lib/router";
 import { Hint } from "../components/Hint";
 import { toast } from "../store/toastStore";
 import { haptic } from "../telegram/sdk";
-import { FREE_LEAD_MAGNET } from "../../shared/catalog.ts";
 
 export function Lessons() {
   const s = useUserState();
@@ -20,7 +18,7 @@ export function Lessons() {
     <main className="screen">
       <TopBar balance={s.game.balance} />
       <SectionHead eyebrow="Бесплатно · 3 видеоурока" title={<>Мини-курс <em>от Алёны</em></>} />
-      <p className="muted" style={{ marginTop: -4 }}>За 3 вечера вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
+      <p className="muted" style={{ marginTop: -4 }}>За 3 урока вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
 
       {lp.done === lp.total && (
         <button className="card card--ink grain card--pressable row" style={{ textAlign: "left", width: "100%", marginTop: 16 }} onClick={() => navigate({ name: "next" })}>
@@ -93,26 +91,14 @@ export function Lessons() {
       </div>
 
       <section className="section">
-        <SectionHead eyebrow="Материалы к урокам" title="Забирайте себе" />
-        {s.progress.onboarded ? (
-          <div className="stack">
-            {FREE_LEAD_MAGNET.map((id) => {
-              const g = guideById(id)!;
-              return (
-                <button key={id} className="card card--pressable row" style={{ textAlign: "left" }} onClick={() => navigate({ name: "guide", id })}>
-                  <span className="task__icon">{g.emoji}</span>
-                  <div className="grow">
-                    <b>{g.title}</b>
-                    <div className="muted small">{g.subtitle}</div>
-                  </div>
-                  <IconChevron width={18} />
-                </button>
-              );
-            })}
+        <button className="card card--lime card--pressable row" style={{ textAlign: "left", width: "100%", padding: 18 }} onClick={() => navigate({ name: "shop" })}>
+          <span className="task__icon">🛍️</span>
+          <div className="grow">
+            <b className="h3" style={{ display: "block" }}>Другие курсы</b>
+            <div className="small" style={{ marginTop: 4, opacity: 0.75 }}>Программы, марафоны и гайды Алёны — в Магазине</div>
           </div>
-        ) : (
-          <Empty icon="🎁" title="Материалы откроются после старта" text="Пройдите приветствие, чтобы получить подарки." />
-        )}
+          <IconChevron width={20} />
+        </button>
       </section>
     </main>
   );

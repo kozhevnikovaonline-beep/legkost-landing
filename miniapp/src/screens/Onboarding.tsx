@@ -55,14 +55,16 @@ export function Onboarding() {
 
       {step === 0 && (
         <>
-          <div className="onb__visual">
+          <div className="onb__visual onb__visual--welcome">
             <span className="bg-word" style={{ top: 0, left: -20 }}>ЛЁГКОСТЬ</span>
-            <div className="onb__photo">
-              <Img src={BRAND.authorPhoto} alt={`${BRAND.author} на тренировке`} />
+            <div className="onb__photo-wrap">
+              <div className="onb__photo onb__photo--sm">
+                <Img src={BRAND.authorPhoto} alt={`${BRAND.author} на тренировке`} />
+              </div>
+              <span className="hand onb__sign">Алёна ♥</span>
             </div>
-            <span className="hand" style={{ position: "absolute", right: 8, bottom: 16, fontSize: 34 }}>Алёна ♥</span>
           </div>
-          <div className="onb__text" key="s0">
+          <div className="onb__text onb__text--welcome" key="s0">
             <div className="eyebrow" style={{ justifySelf: "center" }}>Привет, {name}!</div>
             <h1 className="h1">
               Я Алёна Ветрова — и я <em>за лёгкость</em>, а не за диеты
@@ -104,7 +106,7 @@ export function Onboarding() {
             <h1 className="h1">
               3 урока <em>бесплатно</em>
             </h1>
-            <p className="muted">За 3 вечера вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
+            <p className="muted">За 3 урока вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
           </div>
         </>
       )}

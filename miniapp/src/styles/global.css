@@ -306,8 +306,9 @@ h1,h2,h3,p{margin:0}
 .exercise{display:flex;gap:12px;padding:14px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line)}
 .exercise__dose{font:700 13px/1.2 var(--f-display);color:var(--accent);white-space:nowrap}
 .guide-hero{position:relative;border-radius:var(--r-xl);overflow:hidden;padding:22px 20px;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--bg-3);color:#fff}
-.guide-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
-.guide-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,15,.15),rgba(14,11,15,.92));z-index:1}
+.guide-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,15,0) 35%,rgba(14,11,15,.55) 70%,rgba(14,11,15,.82) 100%);z-index:1}
+.guide-hero h1,.guide-hero p{text-shadow:0 1px 12px rgba(0,0,0,.45)}
 .guide-hero>*:not(img){position:relative;z-index:2}
 .guide-hero .bg-word{top:10px;right:-10px;z-index:1;-webkit-text-stroke-color:rgba(255,255,255,.2)}
 
@@ -398,6 +399,13 @@ h1,h2,h3,p{margin:0}
 .onb__visual{position:relative;flex:1;display:grid;place-items:center;min-height:260px}
 .onb__photo{width:min(70vw,280px);aspect-ratio:4/5;border-radius:140px 140px 28px 28px;overflow:hidden;box-shadow:var(--shadow)}
 .onb__photo img{width:100%;height:100%;object-fit:cover}
+.onb__visual--welcome{flex:none;min-height:0;padding:4px 0 0}
+.onb__photo-wrap{position:relative}
+.onb__photo--sm{width:auto;height:min(30vh,260px);border-radius:120px 120px 24px 24px}
+.onb__sign{position:absolute;right:-26px;bottom:10px;font-size:30px;text-shadow:0 2px 10px rgba(255,255,255,.6)}
+.onb__text--welcome{margin-top:30px;gap:10px}
+.onb__text--welcome .h1{font-size:clamp(21px,6vw,27px)}
+.onb__text--welcome .muted{font-size:14.5px;line-height:1.5}
 .onb__gift{display:grid;gap:10px;width:100%}
 .onb__text{text-align:center;display:grid;gap:12px;animation:screenIn .4s var(--ease)}
 .quiz-opt{display:block;width:100%;text-align:left;padding:16px 18px;border-radius:var(--r-md);background:var(--card);border:1.5px solid var(--line);font-weight:700;transition:all .2s var(--ease)}

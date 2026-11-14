@@ -5,13 +5,14 @@ import { productById } from "../content/products";
 import { Blocks } from "../components/Blocks";
 import { Empty, Img, SubBar } from "../components/ui";
 import { useUserState } from "../store/appStore";
-import { isOwned } from "../store/selectors";
+import { isMaterialUnlocked, isOwned, materialLesson } from "../store/selectors";
 import { navigate } from "../lib/router";
 
 export function Guide({ id }: { id: string }) {
   const s = useUserState();
   const g = guideById(id);
   const owned = isOwned(s, id);
+  const lessonLock = owned && !isMaterialUnlocked(s, id) ? materialLesson(id) : null;
 
   useEffect(() => {
     // Закрытый платный гайд — показываем карточку продукта вместо содержимого
@@ -35,6 +36,20 @@ export function Guide({ id }: { id: string }) {
           icon="🔒"
           title="Материал пока закрыт"
           text={id === "bonus-hormones" ? "Бонус откроется после прохождения всех 3 уроков." : "Он откроется после приветствия в приложении."}
+          action={<button className="btn btn-primary" onClick={() => navigate({ name: "lessons" })}>К урокам</button>}
+        />
+      </main>
+    );
+  }
+
+  if (lessonLock) {
+    return (
+      <main className="screen screen--sub">
+        <SubBar title={g.title} />
+        <Empty
+          icon="🔒"
+          title="Материал пока закрыт"
+          text={`Он откроется вместе с уроком ${lessonLock.number}.`}
           action={<button className="btn btn-primary" onClick={() => navigate({ name: "lessons" })}>К урокам</button>}
         />
       </main>

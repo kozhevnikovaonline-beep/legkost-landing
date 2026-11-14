@@ -1,11 +1,13 @@
 import { GUIDES } from "../content/guides";
 import { PRODUCTS } from "../content/products";
 import { Empty, SubBar } from "../components/ui";
-import { IconChevron } from "../components/Icons";
+import { IconChevron, IconLock } from "../components/Icons";
 import { useUserState } from "../store/appStore";
+import { isMaterialUnlocked, materialLesson } from "../store/selectors";
+import { toast } from "../store/toastStore";
 import { navigate } from "../lib/router";
 import { config } from "../config";
-import { openLink } from "../telegram/sdk";
+import { haptic, openLink } from "../telegram/sdk";
 
 export function Materials() {
   const s = useUserState();
@@ -44,16 +46,30 @@ export function Materials() {
         />
       ) : (
         <div className="stack">
-          {guides.map((g) => (
-            <button key={g.id} className="card card--pressable row" style={{ textAlign: "left" }} onClick={() => navigate({ name: "guide", id: g.id })}>
-              <span className="task__icon">{g.emoji}</span>
-              <div className="grow">
-                <b>{g.title}</b>
-                <div className="muted small">{g.readMinutes} мин чтения</div>
-              </div>
-              <IconChevron width={18} />
-            </button>
-          ))}
+          {guides.map((g) => {
+            const open = isMaterialUnlocked(s, g.id);
+            const lessonN = materialLesson(g.id)?.number;
+            return (
+              <button
+                key={g.id}
+                className={`card card--pressable row${open ? "" : " lesson-card--locked"}`}
+                style={{ textAlign: "left" }}
+                aria-disabled={!open}
+                onClick={() => {
+                  if (open) return navigate({ name: "guide", id: g.id });
+                  haptic.warning();
+                  toast.info(`Материал откроется вместе с уроком ${lessonN}`);
+                }}
+              >
+                <span className="task__icon">{open ? g.emoji : <IconLock width={20} />}</span>
+                <div className="grow">
+                  <b>{g.title}</b>
+                  <div className="muted small">{open ? `${g.readMinutes} мин чтения` : `Откроется вместе с уроком ${lessonN}`}</div>
+                </div>
+                <IconChevron width={18} />
+              </button>
+            );
+          })}
         </div>
       )}
     </main>

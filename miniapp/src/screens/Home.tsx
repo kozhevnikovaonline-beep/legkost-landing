@@ -10,7 +10,6 @@ import { fmt, greeting } from "../lib/format";
 import { navigate } from "../lib/router";
 import { getUser } from "../telegram/sdk";
 import { Hint } from "../components/Hint";
-import { isDemoBackend } from "../config";
 
 export function Home() {
   const s = useUserState();
@@ -25,9 +24,6 @@ export function Home() {
   return (
     <main className="screen">
       <TopBar balance={s.game.balance} />
-      {isDemoBackend && !document.documentElement.classList.contains("is-telegram") && (
-        <div className="demo-banner">🧪 Демо в браузере. Откройте через Telegram-бота — будет ваше имя и синхронизация.</div>
-      )}
 
       <section className="hello">
         <div className="muted small">{greeting()},</div>
@@ -122,21 +118,6 @@ export function Home() {
           </div>
           <IconChevron width={20} />
         </button>
-      </section>
-
-      {/* Онлайн-программа */}
-      <section className="section">
-        <div className="card program-card">
-          <Img src={BRAND.heroPhoto} alt="" className="program-card__img" />
-          <div className="program-card__body">
-            <div className="eyebrow">31 день · онлайн</div>
-            <h2 className="h2">Онлайн-программа для женщин <em>«Лёгкость»</em></h2>
-            <p className="muted" style={{ marginTop: 10 }}>Питание без подсчёта калорий, тренировки по 20 минут дома, сон и работа с отёками — и куратор рядом каждый день. В среднем −5–7 кг за 31 день без срывов.</p>
-            <button className="btn btn-primary btn-sm" style={{ marginTop: 16 }} onClick={() => navigate({ name: "program" })}>
-              Подробнее →
-            </button>
-          </div>
-        </div>
       </section>
 
       {/* Обмен лепестков */}

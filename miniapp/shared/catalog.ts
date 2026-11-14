@@ -29,12 +29,13 @@ export const CATALOG: CatalogItem[] = [
   { id: "bonus-hormones", kind: "free", plans: [] },
 
   // Гайды
-  { id: "guide-desserts", kind: "guide", priceFeathers: 6000, plans: one(290) },
-  { id: "guide-pelvic", kind: "guide", priceFeathers: 8000, plans: one(390) },
-  { id: "guide-posture", kind: "guide", priceFeathers: 8000, plans: one(390) },
-  { id: "guide-cellulite", kind: "guide", priceFeathers: 8000, plans: one(390) },
-  { id: "guide-cortisol", kind: "guide", priceFeathers: 10000, plans: one(490) },
-  { id: "guide-menu14", kind: "guide", priceFeathers: 12000, plans: one(590) },
+  // Цена в лепестках растёт вместе с ценой в рублях: 290 ₽ → 1 000, 390 ₽ → 1 500, 490 ₽ → 2 000, 590 ₽ → 2 500
+  { id: "guide-desserts", kind: "guide", priceFeathers: 1000, plans: one(290) },
+  { id: "guide-pelvic", kind: "guide", priceFeathers: 1500, plans: one(390) },
+  { id: "guide-posture", kind: "guide", priceFeathers: 1500, plans: one(390) },
+  { id: "guide-cellulite", kind: "guide", priceFeathers: 1500, plans: one(390) },
+  { id: "guide-cortisol", kind: "guide", priceFeathers: 2000, plans: one(490) },
+  { id: "guide-menu14", kind: "guide", priceFeathers: 2500, plans: one(590) },
 
   // Платные форматы (лепестки → скидка до 30%)
   { id: "marathon-edema", kind: "paid", plans: one(990, "7 дней") },

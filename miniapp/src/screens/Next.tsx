@@ -67,7 +67,7 @@ export function Next() {
       </section>
 
       <section className="section">
-        <div className="card card--ink grain">
+        <div className="card card--fuchsia grain">
           <div className="eyebrow">Бонус выпускнице мини-курса</div>
           <div className="row" style={{ alignItems: "flex-start" }}>
             <Feather size="lg" />

@@ -121,7 +121,7 @@ export function Product({ id }: { id: string }) {
       {!owned && (
         <section className="section">
           <div className="card stack has-hint">
-            <Hint title="Цена и скидка" text="Лепестки можно обменять на скидку: 100 лепестков = 1 ₽, максимум 30% цены. Гайды можно открыть целиком за лепестки или купить за рубли." />
+            <Hint title="Цена и скидка" text="На курсы и программы лепестки дают скидку: 1 лепесток = 1 ₽, максимум 30% цены. Гайды можно открыть целиком за лепестки или купить за рубли." />
             <div className="row" style={{ justifyContent: "space-between" }}>
               <span className="muted">Цена</span>
               <span className="price">
@@ -188,7 +188,7 @@ function DiscountSheet({ productId, onDone }: { productId: string; onDone: () =>
     <div className="discount">
       <div>
         <div className="eyebrow">Скидка за лепестки</div>
-        <h2 className="h2">{fmt(ECONOMY.feathersPerRub)} лепестков = 1 ₽</h2>
+        <h2 className="h2">1 лепесток = 1 ₽</h2>
         <p className="muted small" style={{ marginTop: 6 }}>
           Можно оплатить до 30% цены — до {rub(limit)}. Уже активировано: {rub(already)}.
         </p>

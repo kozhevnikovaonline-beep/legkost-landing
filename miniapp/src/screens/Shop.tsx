@@ -13,7 +13,6 @@ import { useUserState } from "../store/appStore";
 import { isOwned } from "../store/selectors";
 import { compact, fmt, rub } from "../lib/format";
 import { navigate } from "../lib/router";
-import { ECONOMY } from "../../shared/economy.ts";
 
 type Filter = "all" | ProductCategory;
 const FILTERS: { id: Filter; label: string }[] = [
@@ -37,11 +36,11 @@ export function Shop() {
       <SectionHead eyebrow="Магазин" title={<>Тратьте <em>лепестки</em> с пользой</>} />
 
       <div className="card shop-hero has-hint">
-        <Hint title="Ваш баланс" text="Лепестки копятся за тапы, уроки, тесты и ежедневные визиты. Гайды можно открыть целиком за лепестки, а на программы — получить скидку до 30%." />
+        <Hint title="Ваш баланс" text="Лепестки копятся за тапы, уроки, тесты и ежедневные визиты. Гайды можно открыть целиком за лепестки, а на курсы и программы — получить скидку до 30% (1 лепесток = 1 ₽)." />
         <Feather size="lg" />
         <div className="grow small">
           <b>{fmt(s.game.balance)} лепестков</b>
-          <div className="muted">Гайды — целиком за лепестки. На программы — скидка до 30% ({ECONOMY.feathersPerRub} лепестков = 1 ₽).</div>
+          <div className="muted">Гайды — целиком за лепестки. На курсы — скидка до 30%: 1 лепесток = 1 ₽.</div>
         </div>
       </div>
 

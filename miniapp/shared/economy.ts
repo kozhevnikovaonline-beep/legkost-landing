@@ -18,7 +18,7 @@ export const ECONOMY = {
   /** Физический предел скорости тапов (для проверки на сервере) */
   maxTapsPerSecond: 20,
   /** Сколько лепестков = 1 ₽ скидки */
-  feathersPerRub: 100,
+  feathersPerRub: 1,
   /** Максимальная доля цены, которую можно оплатить лепестками */
   maxDiscountShare: 0.3,
   /** Часовой пояс для смены суток (МСК) */
@@ -38,9 +38,9 @@ export const DAILY_REWARDS = [100, 250, 400, 700, 1000, 1500, 2500] as const;
 export const TASK_REWARDS = {
   welcome: 500,
   notifications: 300,
-  "lesson-1": 1000,
-  "lesson-2": 1000,
-  "lesson-3": 1000,
+  "lesson-1": 300,
+  "lesson-2": 300,
+  "lesson-3": 300,
   "all-lessons": 1500,
   "quiz-type": 500,
   "quiz-format": 500,

@@ -80,7 +80,7 @@ describe("магазин", () => {
   it("гайд покупается за лепестки по цене каталога", () => {
     const s = ok(reduce(rich(), { type: "buyFeathers", itemId: "guide-desserts" }, T0));
     expect(s.progress.owned).toContain("guide-desserts");
-    expect(s.game.balance).toBe(200_000 - 6000);
+    expect(s.game.balance).toBe(200_000 - 1000);
     expect(reduce(s, { type: "buyFeathers", itemId: "guide-desserts" }, T0)).toEqual({ ok: false, error: "already_owned" });
     expect(reduce(s, { type: "buyFeathers", itemId: "system" }, T0)).toEqual({ ok: false, error: "bad_request" });
   });

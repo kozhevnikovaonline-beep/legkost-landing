@@ -4,9 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>«ЛЁГКОСТЬ» — онлайн-курс похудения для женщин без диет | Алёна Ветрова</title>
-<meta name="description" content="Онлайн-курс похудения для женщин 25–55 лет: минус 5–7 кг за 28 дней без голодовок, запретов и зала. Питание по тарелке, тренировки 20 минут дома, личный куратор. Заберите бесплатный гайд «Почему вес стоит».">
+<meta name="description" content="Онлайн-курс похудения для женщин 25–55 лет: минус 5–7 кг за 28 дней без голодовок, запретов и зала. Питание по тарелке, тренировки 20 минут дома, личный куратор. Получите 3 бесплатных видеоурока.">
 <meta name="keywords" content="онлайн курс похудения для женщин, похудеть без диет, как убрать живот женщине, фитнес онлайн дома, похудение после родов, похудеть после 40">
 <meta name="theme-color" content="#0E0B0F">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ЛЁГКОСТЬ">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 <meta name="robots" content="noindex, nofollow"><!-- ТЕСТОВАЯ ВЕРСИЯ: убрать эту строку перед боевым запуском -->
 <link rel="canonical" href="https://legkost-online.ru/"><!-- ЗАМЕНИТЬ: ваш домен -->
 
@@ -14,7 +21,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="«ЛЁГКОСТЬ» — система похудения для женщин без диет">
-<meta property="og:description" content="Почему вес стоит, даже если вы едите мало? 7 скрытых причин и система, которая убирает их за 28 дней. Бесплатный гайд внутри.">
+<meta property="og:description" content="Почему вес стоит, даже если вы едите мало? 7 скрытых причин и система, которая убирает их за 28 дней. 3 бесплатных урока внутри.">
 <meta property="og:url" content="https://legkost-online.ru/">
 <meta property="og:image" content="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=1200&h=630&fit=crop&auto=format&q=75"><!-- ЗАМЕНИТЬ: своя обложка 1200×630 -->
 <meta name="twitter:card" content="summary_large_image">
@@ -92,7 +99,7 @@ p{margin:0 0 1em}
 .skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--lime);color:#000;padding:10px 16px;border-radius:12px;font-weight:700}
 .skip:focus{top:12px}
 
-.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 16px}
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left))}
 section{position:relative;padding:72px 0;scroll-margin-top:70px;overflow:hidden}
 @supports (overflow:clip){section{overflow:clip}html,body{overflow-x:clip}}
 .dark{background:var(--bg);color:var(--on-dark)}
@@ -331,22 +338,23 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 /* lead form */
 .lead-sec{background:radial-gradient(900px 500px at 10% 0%,rgba(255,46,138,.25),transparent 60%),var(--bg);overflow:hidden}
 .lead-grid{display:grid;gap:40px;align-items:center}
-.guide{position:relative;max-width:360px;margin:0 auto 10px;width:82%}
-.guide-book{position:relative;aspect-ratio:3/4;border-radius:10px 22px 22px 10px;background:linear-gradient(160deg,#2A1C2A,#140E15);border:1px solid rgba(255,46,138,.4);padding:26px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:-14px 0 0 -4px var(--pink-btn), 0 40px 80px -24px rgba(255,46,138,.6);transform:rotate(-4deg);overflow:hidden}
-.guide-book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.4),transparent)}
-.guide-book .gb-top{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--pink-2);font-weight:800}
-.guide-book .gb-title{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(28px,7vw,40px);line-height:.98;color:#fff}
-.guide-book .gb-title span{color:var(--pink)}
-.guide-book .gb-sub{font-size:13px;color:var(--muted-dark);line-height:1.4}
-.guide-book .gb-foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;color:var(--muted-dark);font-weight:700}
-.guide-book .gb-foot b{font-family:var(--f-display);font-size:42px;color:var(--pink);line-height:.8}
-.guide-free{position:absolute;right:-14px;top:-14px;width:84px;height:84px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;text-align:center;font-family:var(--f-display);font-size:18px;line-height:1;transform:rotate(12deg);z-index:2;box-shadow:0 10px 30px -10px rgba(198,255,74,.7)}
-.guide-bonus{position:absolute;left:-12px;bottom:-16px;z-index:2;background:#fff;color:var(--ink);border-radius:16px;padding:10px 14px;font-size:13px;font-weight:800;line-height:1.25;transform:rotate(-3deg);box-shadow:0 20px 40px -14px rgba(0,0,0,.5);max-width:200px}
-.guide-bonus span{color:var(--pink-btn)}
 .inside{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
 .inside li{display:flex;gap:12px;align-items:flex-start;color:var(--muted-dark);font-size:15px;line-height:1.45}
 .inside li b{color:#fff}
 .inside li::before{content:"";flex:none;width:22px;height:22px;border-radius:50%;background:var(--pink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat;margin-top:1px}
+.lessons{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:l}
+.lesson{display:flex;gap:16px;align-items:center;padding:12px;border-radius:var(--radius-sm);background:var(--bg-3);border:1px solid rgba(255,255,255,.06);transition:border-color .3s, transform .3s}
+.lesson:hover{border-color:rgba(255,46,138,.5);transform:translateX(4px)}
+.lesson-thumb{position:relative;flex:none;width:104px;aspect-ratio:15/11;border-radius:14px;overflow:hidden;background:var(--bg-2)}
+.lesson-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.75)}
+.play{position:absolute;inset:0;margin:auto;width:38px;height:38px;border-radius:50%;background:var(--pink-btn);box-shadow:var(--glow)}
+.play::after{content:"";position:absolute;left:15px;top:11px;border-left:12px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.lesson-num{display:block;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin-bottom:4px}
+.lesson h3{font-family:var(--f-head);font-weight:600;font-size:15px;line-height:1.3;margin-bottom:4px;color:#fff}
+.lesson p{margin:0;font-size:14px;color:var(--muted-dark);line-height:1.45}
+.lessons-gift{margin:18px 0 0;padding:14px 16px;border-radius:14px;border:1px dashed rgba(198,255,74,.5);color:var(--muted-dark);font-size:14px}
+.lessons-gift b{color:var(--lime)}
+@media (min-width:768px){.lesson-thumb{width:150px}.lesson h3{font-size:16px}}
 .form-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:28px 22px;box-shadow:0 40px 100px -30px rgba(255,46,138,.55);position:relative}
 .form-card h3{font-family:var(--f-head);font-weight:800;font-size:clamp(20px,4vw,26px);text-transform:uppercase;margin-bottom:8px;line-height:1.15}
 .form-card .form-sub{color:var(--ink-2);font-size:15px;margin-bottom:20px}
@@ -399,8 +407,6 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 .final .lead{margin:0 auto 32px}
 .final-ctas{display:flex;flex-direction:column;gap:12px;align-items:center;max-width:420px;margin:0 auto}
 .final-ctas .btn{width:100%}
-.guarantee{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:14px 18px;border-radius:18px;border:1px dashed rgba(198,255,74,.5);color:var(--lime);font-weight:700;font-size:14px;text-align:left;line-height:1.35}
-.guarantee svg{flex:none;width:32px;height:32px}
 
 /* footer */
 .footer{background:#08060A;color:var(--muted-dark);padding:56px 0 110px;font-size:14px}
@@ -441,7 +447,6 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
   .steps{grid-template-columns:repeat(2,1fr)}
   .form-card{padding:36px}
   .footer-grid{grid-template-columns:1.4fr 1fr 1fr}
-  .regalia{grid-template-columns:repeat(4,1fr)}
   .quiz-wrap{grid-template-columns:1fr 1fr}
   .quiz-result{position:sticky;top:96px;margin-top:0}
 }
@@ -455,6 +460,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 }
 /* ========== ≥ 1280px ========== */
 @media (min-width:1280px){
+  .regalia{grid-template-columns:repeat(4,1fr)}
   .hero-grid{grid-template-columns:1.15fr .85fr;gap:64px}
   .hero-visual{max-width:none}
   .lead-grid{grid-template-columns:1fr 1fr;gap:72px}
@@ -475,6 +481,45 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 @media (min-width:1920px){
   :root{--container:1440px}
   body{font-size:17px}
+}
+/* ===== Mobile: iOS Safari / Android Chrome ===== */
+html{-webkit-tap-highlight-color:transparent;text-size-adjust:100%}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+.hero-grid>*,.lead-grid>*,.author-grid>*,.quiz-wrap>*,.calc>*,.footer-grid>*,.lesson>div{min-width:0}
+h1,h2,h3,.h2{overflow-wrap:break-word;hyphens:manual}
+p,li,summary{overflow-wrap:break-word}
+.header{padding-top:env(safe-area-inset-top)}
+.mobile-menu{inset:calc(64px + env(safe-area-inset-top)) 0 0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:calc(32px + env(safe-area-inset-bottom))}
+.footer{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+a,button,label,summary,input,.btn{touch-action:manipulation}
+button,input,textarea,select{-webkit-appearance:none;appearance:none;border-radius:0}
+input[type=checkbox]{-webkit-appearance:auto;appearance:auto}
+.field input[type=text],.field input[type=tel]{border-radius:16px;font-size:16px}
+input[type=range]{background-color:transparent}
+input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:99px;background:transparent}
+input[type=range]::-webkit-slider-thumb{margin-top:-10px}
+input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:transparent}
+.reviews,.stories{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.btn,.burger,.reviews-nav button,.socials a,.tg-round{min-height:44px;min-width:44px}
+@media (hover:none){
+  .btn-primary:hover,.btn-tg:hover,.pillar:hover,.week:hover,.lesson:hover{transform:none}
+  .pillar:hover .pillar-img img{transform:none}
+  .btn-arrow:hover::after{transform:none}
+}
+@media (max-width:359px){
+  .container{padding-left:12px;padding-right:12px}
+  .hero h1{font-size:36px}
+  .h2{font-size:23px}
+  .btn{padding:0 18px;font-size:15px}
+  .hero-stats{gap:4px}.stat small{font-size:11px}
+  .regalia{grid-template-columns:1fr}
+  .msgr label{font-size:12px;padding:10px 4px}
+  .lesson{flex-direction:column;align-items:flex-start}.lesson-thumb{width:100%}
+  .sticker{padding:8px 12px;font-size:12px}.sticker b{font-size:22px}
+}
+@supports (-webkit-touch-callout:none){
+  /* iOS: без 100vh-скачков и без масштабирования полей */
+  .mobile-menu{height:calc(100dvh - 64px - env(safe-area-inset-top))}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -510,7 +555,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
       <a href="#reviews">Отзывы</a>
       <a href="#faq">Вопросы</a>
     </nav>
-    <a href="#guide" class="btn btn-primary header-cta" data-goal="cta_header">Получить гайд</a>
+    <a href="#guide" class="btn btn-primary header-cta" data-goal="cta_header">Бесплатные уроки</a>
     <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
   </div>
 </header>
@@ -521,7 +566,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
   <a href="#author">Об авторе</a>
   <a href="#reviews">Отзывы</a>
   <a href="#faq">Вопросы</a>
-  <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_menu">Забрать гайд бесплатно</a>
+  <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_menu">Получить бесплатные уроки</a>
 </nav>
 
 <main id="main">
@@ -538,9 +583,9 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
           <li>голодовок</li><li>запретов на вкусное</li><li>зала и 2 часов в день</li>
         </ul>
         <div class="hero-ctas reveal d3">
-          <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_hero">Забрать разбор бесплатно</a>
+          <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_hero">Смотреть 3 урока бесплатно</a>
         </div>
-        <p class="hero-note reveal d3">Гайд + меню на 3 дня придут в Telegram за 1 минуту</p>
+        <p class="hero-note reveal d3">Доступ к урокам придёт в Telegram за 1 минуту</p>
         <div class="trust reveal d3">
           <div class="avatars" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces&auto=format&q=60" width="40" height="40" alt="" loading="lazy">
@@ -606,8 +651,8 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
         <div class="quiz-meta"><span>Совпадений</span><span><span id="qCount">0</span> из 5</span></div>
         <div class="meter" role="progressbar" aria-label="Совпадения" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="qMeter"><i></i></div>
         <h3 id="qTitle">Отметьте пункты слева</h3>
-        <p id="qText">Если узнали себя хотя бы в 2–3 пунктах — дело не в силе воли. Покажу, в чём.</p>
-        <a href="#guide" class="btn btn-primary btn-block btn-arrow" data-goal="cta_quiz">Узнать причину в гайде</a>
+        <p id="qText">Если узнали себя хотя бы в 2–3 пунктах — дело не в силе воли. На бесплатном уроке покажу, в чём.</p>
+        <a href="#guide" class="btn btn-primary btn-block btn-arrow" data-goal="cta_quiz">Найти причину на уроке</a>
       </div>
     </div>
   </div>
@@ -650,7 +695,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
         <div class="calc-big" id="cTotal">30 000 ₽</div>
         <div class="calc-sub" id="cTime">и 18 недель жизни на ограничениях</div>
         <p>А вес всё равно вернулся. Хватит платить за то, что не работает.</p>
-        <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_calc">Попробовать иначе — бесплатно</a>
+        <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_calc">Начать с бесплатных уроков</a>
       </div>
     </div>
   </div>
@@ -844,29 +889,31 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
   <div class="container">
     <div class="lead-grid">
       <div class="reveal">
-        <div class="guide" aria-hidden="true">
-          <div class="guide-free" style="font-size:30px">0 ₽</div>
-          <div class="guide-book">
-            <div class="gb-top">Гайд · Алёна Ветрова</div>
-            <div class="gb-title">Почему <span>вес стоит</span>: 7 скрытых причин</div>
-            <div class="gb-sub">+ меню на 3 дня без голода и список покупок</div>
-            <div class="gb-foot"><span>ЛЁГКОСТЬ<br>PDF · 24 стр.</span><b>7</b></div>
-          </div>
-          <div class="guide-bonus">🎁 Бонус: видеоурок <span>«Плоский живот за 10 минут»</span></div>
-        </div>
-        <ul class="inside" style="margin-top:48px">
-          <li><span><b>7 причин,</b> почему вес стоит, даже когда вы едите мало — и как проверить каждую у себя</span></li>
-          <li><span><b>Меню на 3 дня</b> из обычных продуктов: сытно, вкусно, без подсчёта калорий</span></li>
-          <li><span><b>Правило «сладкое после еды»</b> — чтобы не срываться вечером</span></li>
-          <li><span><b>Видеоурок 10 минут</b> на живот и осанку — можно сделать прямо сегодня</span></li>
-        </ul>
+        <span class="eyebrow">Бесплатно · 3 видеоурока</span>
+        <h2 class="h2" style="margin-bottom:12px">Начните худеть <em>уже сегодня</em> — с&nbsp;3&nbsp;бесплатных уроков</h2>
+        <p class="lead" style="margin-bottom:28px">Мини-курс от Алёны Ветровой: за 3 вечера вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
+        <ol class="lessons">
+          <li class="lesson">
+            <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
+            <div><span class="lesson-num">Урок 1 · 18 мин</span><h3>Почему вес стоит: 7 скрытых причин</h3><p>Проверите себя по чек-листу и найдёте свою причину — отёки, недоедание, сон или гормоны.</p></div>
+          </li>
+          <li class="lesson">
+            <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
+            <div><span class="lesson-num">Урок 2 · 15 мин</span><h3>Тарелка без голода + меню на 3 дня</h3><p>Как есть обычную еду и худеть. Правило «сладкое после еды», чтобы не срываться вечером.</p></div>
+          </li>
+          <li class="lesson">
+            <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
+            <div><span class="lesson-num">Урок 3 · 20 мин</span><h3>Плоский живот: тренировка дома</h3><p>Повторяете за мной прямо в гостиной — без прыжков, бережно к спине и коленям.</p></div>
+          </li>
+        </ol>
+        <p class="lessons-gift">🎁 После 3-го урока — <b>бонус-эфир «Питание при гормональных сбоях»</b></p>
       </div>
 
       <div class="form-card reveal d1" id="formCard">
         <form id="leadForm" novalidate>
-          <h3>Узнать подробнее о курсе и забрать гайд</h3>
-          <p class="form-sub">Оставьте контакты — пришлём гайд и расскажем, как устроена система. Без спама, отписаться можно в 1 клик.</p>
-          <div class="offer-pill"><span aria-hidden="true">🔥</span>Первым 30 в этом месяце — бонус-эфир «Питание при гормональных сбоях»</div>
+          <h3>Получите 3 бесплатных урока и узнайте подробнее о курсе</h3>
+          <p class="form-sub">Оставьте контакты — откроем доступ к урокам и расскажем, как устроена система. Без спама, отписаться можно в 1 клик.</p>
+          <div class="offer-pill"><span aria-hidden="true">▶️</span>Уроки открываются сразу — смотрите с телефона, когда удобно</div>
 
           <div class="field" id="fName">
             <label for="name">Ваше имя</label>
@@ -876,10 +923,10 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
           <div class="field" id="fPhone">
             <label for="phone">Телефон</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required aria-describedby="ePhone">
-            <div class="err" id="ePhone">Введите номер полностью: +7 (999) 123-45-67</div>
+            <div class="err" id="ePhone">Введите номер полностью: +7 (900) 000-00-00</div>
           </div>
           <fieldset>
-            <legend>Куда удобнее прислать гайд?</legend>
+            <legend>Куда прислать доступ к урокам?</legend>
             <div class="msgr">
               <input type="radio" name="messenger" id="mTg" value="Telegram" checked><label for="mTg"><svg style="color:#2AABEE"><use href="#i-tg"/></svg>Telegram</label>
               <input type="radio" name="messenger" id="mWa" value="WhatsApp"><label for="mWa"><svg style="color:#25D366"><use href="#i-wa"/></svg>WhatsApp</label>
@@ -892,17 +939,17 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
             <label class="consent"><input type="checkbox" id="consent" name="consent" required>Я соглашаюсь на обработку персональных данных и принимаю <a href="privacy.html" target="_blank">политику конфиденциальности</a></label>
             <div class="err">Нужно ваше согласие, чтобы отправить заявку</div>
           </div>
-          <button type="submit" class="btn btn-primary btn-block btn-arrow" id="submitBtn">Получить гайд и подробности</button>
+          <button type="submit" class="btn btn-primary btn-block btn-arrow" id="submitBtn">Получить бесплатные уроки</button>
           <p class="form-safe">🔒 Данные защищены и не передаются третьим лицам</p>
         </form>
 
         <div class="thanks" role="status" aria-live="polite">
           <div class="thanks-ico" aria-hidden="true">💗</div>
           <h3>Спасибо, <span id="thName">красавица</span>!</h3>
-          <p>Заявка принята. Последний шаг — заберите гайд в нашем Telegram-боте: он пришлёт PDF и видеоурок за 1 минуту.</p>
+          <p>Заявка принята. Последний шаг — откройте уроки в нашем Telegram: первый урок придёт за 1 минуту, следующие — в течение 2 дней.</p>
           <p style="margin-bottom:4px">Ваше кодовое слово:</p>
           <span class="code">ЛЁГКОСТЬ</span>
-          <a href="https://t.me/legkost_guide_bot?start=landing_guide" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-goal="thanks_bot"><svg><use href="#i-tg"/></svg>Забрать гайд в Telegram</a>
+          <a href="https://t.me/legkost_guide_bot?start=landing_guide" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-goal="thanks_bot"><svg><use href="#i-tg"/></svg>Открыть уроки в Telegram</a>
           <p style="font-size:13px;margin-top:14px">Нет Telegram? Наш куратор напишет вам в выбранный мессенджер в течение дня.</p>
         </div>
       </div>
@@ -923,8 +970,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
       <details class="reveal"><summary>У меня совсем нет времени. Я справлюсь?</summary><div class="ans"><p>Тренировка — 20 минут, дневник питания — 5 минут. Рецепты готовятся до 20 минут и подходят всей семье, так что отдельно готовить «для себя» не нужно.</p></div></details>
       <details class="reveal"><summary>Придётся отказаться от сладкого и хлеба?</summary><div class="ans"><p>Нет. В системе нет запрещённых продуктов. Мы учимся встраивать любимую еду так, чтобы она не мешала результату. Именно поэтому нет срывов.</p></div></details>
       <details class="reveal"><summary>У меня больные колени / спина. Тренировки не навредят?</summary><div class="ans"><p>Тренировки без прыжков и ударной нагрузки. Для каждого упражнения есть облегчённый вариант. При заболеваниях проконсультируйтесь с врачом — куратор подберёт безопасный план.</p></div></details>
-      <details class="reveal"><summary>А если не получится?</summary><div class="ans"><p>Если в течение первых 7 дней вы поймёте, что система вам не подходит, — вернём деньги полностью, без вопросов.</p></div></details>
-      <details class="reveal"><summary>Что будет после того, как я оставлю заявку?</summary><div class="ans"><p>Telegram-бот сразу пришлёт гайд и видеоурок, а затем расскажет, как устроен курс, когда ближайший старт и сколько стоит участие. Никаких навязчивых звонков.</p></div></details>
+      <details class="reveal"><summary>Что будет после того, как я оставлю заявку?</summary><div class="ans"><p>В Telegram сразу придёт первый бесплатный урок, затем ещё два, а после расскажет, как устроен курс, когда ближайший старт и сколько стоит участие. Никаких навязчивых звонков.</p></div></details>
     </div>
   </div>
 </section>
@@ -934,14 +980,10 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
   <div class="container">
     <span class="hand reveal" style="display:block;margin-bottom:12px">через 28 дней вы скажете себе спасибо</span>
     <h2 class="reveal d1">Хватит начинать <span>с понедельника.</span> Начните с себя — сегодня</h2>
-    <p class="lead reveal d2">Заберите бесплатный гайд и узнайте, какая из 7 причин держит ваш вес. Это займёт 1 минуту.</p>
+    <p class="lead reveal d2">Посмотрите 3 бесплатных урока и узнайте, какая из 7 причин держит ваш вес. Первый урок — уже через минуту.</p>
     <div class="final-ctas reveal d3">
-      <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_final">Забрать гайд бесплатно</a>
-      <a href="https://wa.me/79991234567?text=%D0%9B%D0%81%D0%93%D0%9A%D0%9E%D0%A1%D0%A2%D0%AC" class="btn btn-ghost" target="_blank" rel="noopener" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg>Написать в WhatsApp</a>
-    </div>
-    <div class="guarantee reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-      <span>Гарантия: вернём деньги в течение 7 дней,<br>если система вам не подойдёт</span>
+      <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_final">Получить 3 урока бесплатно</a>
+      <a href="https://wa.me/70000000000?text=%D0%9B%D0%81%D0%93%D0%9A%D0%9E%D0%A1%D0%A2%D0%AC" class="btn btn-ghost" target="_blank" rel="noopener" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg>Написать в WhatsApp</a>
     </div>
   </div>
 </section>
@@ -957,7 +999,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
         <p style="margin-top:16px;max-width:320px">Онлайн-курс похудения для женщин без диет, голодовок и запретов. Питание, движение и образ жизни — в одной системе.</p>
         <div class="socials">
           <a href="https://t.me/legkost_vetrova" target="_blank" rel="noopener" aria-label="Telegram-канал" data-goal="messenger_tg"><svg><use href="#i-tg"/></svg></a>
-          <a href="https://wa.me/79991234567" target="_blank" rel="noopener" aria-label="WhatsApp" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg></a>
+          <a href="https://wa.me/70000000000" target="_blank" rel="noopener" aria-label="WhatsApp" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg></a>
           <a href="https://vk.com/legkost_online" target="_blank" rel="noopener" aria-label="ВКонтакте" data-goal="messenger_vk"><svg><use href="#i-vk"/></svg></a>
         </div>
       </div>
@@ -968,10 +1010,9 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
       <div>
         <h4>Контакты</h4>
         <ul>
-          <li><a href="tel:+79991234567" data-goal="phone_click">+7 (999) 123-45-67</a></li>
+          <li><a href="tel:+70000000000" data-goal="phone_click">+7 (000) 000-00-00</a></li>
           <li><a href="mailto:hello@legkost-online.ru">hello@legkost-online.ru</a></li>
-          <li><a href="https://t.me/legkost_guide_bot" target="_blank" rel="noopener" data-goal="messenger_tg">Telegram-бот: @legkost_guide_bot</a></li>
-          <li>Ежедневно 9:00–21:00 (МСК)</li>
+          <li><a href="https://t.me/legkost_guide_bot" target="_blank" rel="noopener" data-goal="messenger_tg">Telegram: @legkost_guide_bot</a></li>
         </ul>
       </div>
       <div>
@@ -984,7 +1025,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 «ЛЁГКОСТЬ». ИП Ветрова Алёна Сергеевна · ИНН 771234567890 · ОГРНИП 324770000123456</span>
+      <span>© 2026 «ЛЁГКОСТЬ». ИП Ветрова Алёна Сергеевна</span>
       <span>Информация на сайте носит ознакомительный характер и не является медицинской услугой. Перед началом занятий проконсультируйтесь с врачом. Результаты индивидуальны и зависят от исходных данных и соблюдения рекомендаций.</span>
     </div>
   </div>
@@ -992,7 +1033,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 
 <!-- sticky mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="#guide" class="btn btn-primary" data-goal="cta_sticky">Получить гайд бесплатно</a>
+  <a href="#guide" class="btn btn-primary" data-goal="cta_sticky">Бесплатные уроки</a>
   <a href="https://t.me/legkost_guide_bot?start=sticky" class="tg-round" target="_blank" rel="noopener" aria-label="Написать в Telegram" data-goal="messenger_tg"><svg><use href="#i-tg"/></svg></a>
 </div>
 
@@ -1067,11 +1108,11 @@ const CONFIG = {
   const qs = $$('#quiz input'), meter = $('#qMeter');
   const texts = [
     ['Отметьте пункты слева', 'Если узнали себя хотя бы в 2–3 пунктах — дело не в силе воли. Покажу, в чём.'],
-    ['Первый звоночек', 'Один пункт — уже повод разобраться, пока проблема не закрепилась. В гайде — как проверить себя.'],
+    ['Первый звоночек', 'Один пункт — уже повод разобраться, пока проблема не закрепилась. На первом бесплатном уроке покажу, как проверить себя.'],
     ['Вам нужна система, а не диета', 'Это классическая картина «замедленного» обмена после ограничений. Хорошая новость — это обратимо.'],
     ['Вам точно нужна система', 'Ещё одна жёсткая диета только усугубит ситуацию. Нужна работа с питанием, движением и образом жизни вместе.'],
-    ['Ваше тело просит другой подход', 'Вы много раз старались — и это не ваша вина. Гайд покажет, какие 7 причин держат вес именно у вас.'],
-    ['Это 100% про вас', 'Узнали себя во всех пунктах? Значит, вы готовы к системе. Начните с бесплатного разбора.']
+    ['Ваше тело просит другой подход', 'Вы много раз старались — и это не ваша вина. На бесплатном уроке разберём, какие из 7 причин держат вес именно у вас.'],
+    ['Это 100% про вас', 'Узнали себя во всех пунктах? Значит, вы готовы к системе. Начните с 3 бесплатных уроков.']
   ];
   let quizDone = false;
   const updQuiz = () => {

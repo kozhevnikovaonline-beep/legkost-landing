@@ -1,4 +1,4 @@
-name: Deploy site to GitHub Pages
+name: Deploy site + Mini App to GitHub Pages
 
 on:
   push:
@@ -22,6 +22,30 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: miniapp/package-lock.json
+
+      # Mini App: проверка типов, тесты, сборка → site/app
+      - name: Build Mini App
+        working-directory: miniapp
+        env:
+          # Настройки берутся из Settings → Secrets and variables → Actions → Variables (необязательно)
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_BOT_USERNAME: ${{ vars.VITE_BOT_USERNAME }}
+          VITE_APP_SHORTNAME: ${{ vars.VITE_APP_SHORTNAME }}
+          VITE_CHANNEL_URL: ${{ vars.VITE_CHANNEL_URL }}
+          VITE_CURATOR_URL: ${{ vars.VITE_CURATOR_URL }}
+        run: |
+          npm ci
+          npm test
+          npm run build
+          rm -rf ../site/app
+          cp -r dist ../site/app
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

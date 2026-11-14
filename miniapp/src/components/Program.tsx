@@ -75,7 +75,7 @@ export function FormatCards() {
       {PROGRAM_FORMATS.map((f) => {
         const item = catalogById.get(f.id)!;
         return (
-          <button key={f.id} className={`format-card format-card--${f.tone}`} onClick={() => navigate({ name: "product", id: f.id })}>
+          <button key={f.id} className={`format-card format-card--${f.tone} grain`} onClick={() => navigate({ name: "product", id: f.id })}>
             <div className="format-card__head">
               <span className="format-card__icon">{f.icon}</span>
               <div className="grow">

@@ -120,7 +120,7 @@ export function grantPurchase(s: UserState, productId: string, now: number): Use
   return { ...s, updatedAt: now, progress: { ...s.progress, owned: [...owned], coupons } };
 }
 
-/** Итоговая цена с учётом скидки пёрышками */
+/** Итоговая цена с учётом скидки лепестками */
 export function finalPrice(s: UserState, productId: string, planPriceRub: number): number {
   const coupon = s.progress.coupons[productId] ?? 0;
   return Math.max(0, planPriceRub - Math.min(coupon, maxDiscountRub(planPriceRub)));

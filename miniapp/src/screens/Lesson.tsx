@@ -53,11 +53,11 @@ export function Lesson({ id }: { id: string }) {
       await appStore.dispatch({ type: "lesson", id: lesson.id });
       const { reward } = await appStore.dispatch({ type: "task", id: lesson.id as TaskId });
       haptic.success();
-      toast.success(`Урок ${lesson.number} пройден! +${reward} пёрышек`);
+      toast.success(`Урок ${lesson.number} пройден! +${reward} лепестков`);
       if (lesson.number === LESSONS.length) {
         const r = await appStore.dispatch({ type: "task", id: "all-lessons" });
-        toast.success(`Курс пройден! +${r.reward} пёрышек и бонус-эфир 🎁`);
-        navigate({ name: "guide", id: "bonus-hormones" }, { replace: true });
+        toast.success(`Мини-курс пройден! +${r.reward} лепестков и бонус-эфир 🎁`);
+        navigate({ name: "next" }, { replace: true });
       } else if (next) {
         navigate({ name: "lesson", id: next.id }, { replace: true });
       }
@@ -69,11 +69,11 @@ export function Lesson({ id }: { id: string }) {
   };
 
   const mainText = !done
-    ? `Урок пройден · +${TASK_REWARDS[lesson.id]} пёрышек`
+    ? `Урок пройден · +${TASK_REWARDS[lesson.id]} лепестков`
     : next
       ? `Дальше: урок ${next.number}`
-      : "Подобрать мой формат";
-  const mainClick = !done ? complete : next ? () => navigate({ name: "lesson", id: next.id }, { replace: true }) : () => navigate({ name: "quiz", id: "format" });
+      : "А что дальше?";
+  const mainClick = !done ? complete : next ? () => navigate({ name: "lesson", id: next.id }, { replace: true }) : () => navigate({ name: "next" }, { replace: true });
 
   return (
     <main className="screen screen--sub">
@@ -145,7 +145,7 @@ export function Lesson({ id }: { id: string }) {
           <Feather size="lg" />
           <div className="grow small">
             <b>Урок пройден</b>
-            <div className="muted">Пёрышки начислены. Можно вернуться к материалам в любое время.</div>
+            <div className="muted">Лепестки начислены. Можно вернуться к материалам в любое время.</div>
           </div>
         </div>
       )}

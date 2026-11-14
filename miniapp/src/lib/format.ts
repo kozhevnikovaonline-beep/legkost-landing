@@ -10,7 +10,7 @@ export function compact(n: number): string {
   return `${(n / 1_000_000).toFixed(1).replace(".", ",").replace(",0", "")}M`;
 }
 
-/** Склонение: plural(5, ["пёрышко","пёрышка","пёрышек"]) */
+/** Склонение: plural(5, ["лепесток","лепестка","лепестков"]) */
 export function plural(n: number, forms: [string, string, string]): string {
   const a = Math.abs(n) % 100;
   const b = a % 10;
@@ -20,7 +20,7 @@ export function plural(n: number, forms: [string, string, string]): string {
   return forms[2];
 }
 
-export const feathersWord = (n: number) => plural(n, ["пёрышко", "пёрышка", "пёрышек"]);
+export const feathersWord = (n: number) => plural(n, ["лепесток", "лепестка", "лепестков"]);
 
 export function greeting(date = new Date()): string {
   const h = date.getHours();

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hint, setHintsEnabled, useHintsEnabled } from "../components/Hint";
 import { levelOf } from "../../shared/economy.ts";
 import { quizById } from "../content/quizzes";
 import { BRAND } from "../content/brand";
@@ -19,11 +20,12 @@ export function Profile() {
   const lp = lessonsProgress(s);
   const guides = s.progress.owned.filter((id) => id.startsWith("guide-") || id.startsWith("free-") || id === "bonus-hormones").length;
   const [haptics, setHaptics] = useState(getHapticsEnabled());
+  const hints = useHintsEnabled();
   const typeRes = quizById("type")!.results.find((r) => r.id === s.progress.quizResults["type"]);
   const formatRes = quizById("format")!.results.find((r) => r.id === s.progress.quizResults["format"]);
 
   const resetDemo = async () => {
-    if (!(await confirmDialog("Сбросить весь демо-прогресс: уроки, пёрышки и покупки?"))) return;
+    if (!(await confirmDialog("Сбросить весь демо-прогресс: уроки, лепестки и покупки?"))) return;
     clearState();
     location.hash = "";
     location.reload();
@@ -59,7 +61,8 @@ export function Profile() {
         </div>
       </div>
 
-      <div className="card" style={{ marginTop: 12 }}>
+      <div className="card has-hint" style={{ marginTop: 12 }}>
+        <Hint title="Уровень" text="Уровень растёт от всех лепестков, заработанных за всё время, — покупки его не уменьшают. От «Первого шага» до «Амбассадора»." />
         <div className="row" style={{ justifyContent: "space-between", marginBottom: 8 }}>
           <span className="small muted">Заработано за всё время</span>
           <span className="row small" style={{ gap: 6, fontWeight: 800 }}><Feather /> {fmt(s.game.totalEarned)}</span>
@@ -121,6 +124,19 @@ export function Profile() {
             <span className="menu-item__icon">📳</span>
             <span className="grow">Вибрация</span>
             <span className="switch" aria-checked={haptics} />
+          </button>
+          <button
+            className="menu-item"
+            role="switch"
+            aria-checked={hints}
+            onClick={() => setHintsEnabled(!hints)}
+          >
+            <span className="menu-item__icon">💡</span>
+            <span className="grow">
+              Подсказки
+              <span className="muted small" style={{ display: "block", fontWeight: 500 }}>Значки «?» с пояснениями на блоках</span>
+            </span>
+            <span className="switch" aria-checked={hints} />
           </button>
           {menu("🔒", "Политика конфиденциальности", () => openLink(config.privacyUrl))}
         </div>

@@ -7,7 +7,7 @@ export const BRAND = {
   authorShort: "Алёна",
   authorRole: "Фитнес-тренер, нутрициолог, мама двоих детей",
   curator: "Мария",
-  currency: "пёрышки",
+  currency: "лепестки",
   authorPhoto: unsplash("1593431763017-c689a61b729a", 700, 875),
   heroPhoto: unsplash("1548690312-e3b507d8c110", 900),
   disclaimer:

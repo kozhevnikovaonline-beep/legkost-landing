@@ -1,5 +1,5 @@
 /**
- * Экономика «пёрышек»: энергия, тапы, бусты, ежедневные награды, задания, скидки.
+ * Экономика «лепестков»: энергия, тапы, бусты, ежедневные награды, задания, скидки.
  * Чистые функции без побочных эффектов — одна и та же логика работает
  * на клиенте (мгновенный отклик) и на сервере (защита от накрутки).
  */
@@ -17,9 +17,9 @@ export const ECONOMY = {
   rechargesPerDay: 3,
   /** Физический предел скорости тапов (для проверки на сервере) */
   maxTapsPerSecond: 20,
-  /** Сколько пёрышек = 1 ₽ скидки */
+  /** Сколько лепестков = 1 ₽ скидки */
   feathersPerRub: 100,
-  /** Максимальная доля цены, которую можно оплатить пёрышками */
+  /** Максимальная доля цены, которую можно оплатить лепестками */
   maxDiscountShare: 0.3,
   /** Часовой пояс для смены суток (МСК) */
   tzOffsetMinutes: 180,
@@ -223,7 +223,7 @@ export function claimTask(s: UserState, task: string): Result<{ state: UserState
   };
 }
 
-/** Купить материал целиком за пёрышки */
+/** Купить материал целиком за лепестки */
 export function buyWithFeathers(s: UserState, itemId: string, price: number): Result<UserState> {
   if (s.progress.owned.includes(itemId)) return { ok: false, error: "already_owned" };
   if (s.game.balance < price) return { ok: false, error: "not_enough_feathers" };
@@ -240,7 +240,7 @@ export function buyWithFeathers(s: UserState, itemId: string, price: number): Re
 /** Максимальная скидка в ₽ на продукт с ценой priceRub */
 export const maxDiscountRub = (priceRub: number) => Math.floor(priceRub * ECONOMY.maxDiscountShare);
 
-/** Обменять пёрышки на скидку (накопительно, до 30% цены) */
+/** Обменять лепестки на скидку (накопительно, до 30% цены) */
 export function applyDiscount(s: UserState, productId: string, priceRub: number, rub: number): Result<UserState> {
   const already = s.progress.coupons[productId] ?? 0;
   const amount = Math.floor(rub);

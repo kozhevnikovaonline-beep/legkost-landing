@@ -12,6 +12,7 @@ import {
   TASK_REWARDS,
 } from "../../shared/economy.ts";
 import type { BoostKind } from "../../shared/types.ts";
+import { Hint } from "../components/Hint";
 import { TASKS, type TaskMeta } from "../content/tasks";
 import { Feather, Progress, Sheet, TopBar } from "../components/ui";
 import { IconCheck, IconShare } from "../components/Icons";
@@ -32,7 +33,7 @@ interface Float {
 }
 
 const BOOSTS: { kind: BoostKind; icon: string; title: string; effect: (lvl: number) => string }[] = [
-  { kind: "tap", icon: "👆", title: "Сильный тап", effect: (l) => `+${l} пёрышко за тап` },
+  { kind: "tap", icon: "👆", title: "Сильный тап", effect: (l) => `+${l} лепесток за тап` },
   { kind: "energy", icon: "🔋", title: "Запас сил", effect: (l) => `${ECONOMY.energyBase + (l - 1) * ECONOMY.energyPerLevel} энергии` },
   { kind: "regen", icon: "⚡️", title: "Быстрое восстановление", effect: (l) => `${(ECONOMY.regenBase + (l - 1) * ECONOMY.regenPerLevel).toString().replace(".", ",")} энергии/сек` },
 ];
@@ -105,7 +106,8 @@ export function Tap() {
       <div className="tap-screen">
         <TopBar balance={g.balance} />
 
-        <div className="card" style={{ padding: 14 }}>
+        <div className="card has-hint" style={{ padding: 14 }}>
+          <Hint title="Как это работает" text="Тапайте по монете — за каждый тап начисляются лепестки и тратится энергия. Энергия восстанавливается сама. Бусты усиливают тап, задания дают крупные награды, а за лепестки в Магазине открываются гайды и скидки." />
           <div className="row">
             <div className="grow">
               <div className="row" style={{ justifyContent: "space-between", marginBottom: 8 }}>
@@ -128,7 +130,7 @@ export function Tap() {
           <span className="chip chip--lime">⚡ {String(regenPerSecond(g)).replace(".", ",")}/сек</span>
         </div>
 
-        <div className="tap-zone" onPointerDown={onPointerDown} role="button" aria-label="Тапнуть пёрышко" tabIndex={0}
+        <div className="tap-zone" onPointerDown={onPointerDown} role="button" aria-label="Тапнуть лепесток" tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === " " || e.key === "Enter") {
               e.preventDefault();
@@ -195,7 +197,7 @@ function BoostsSheet() {
       <div>
         <div className="eyebrow">Бусты</div>
         <h2 className="h2">Прокачайте тапалку</h2>
-        <p className="muted small" style={{ marginTop: 6 }}>Баланс: {fmt(s.game.balance)} пёрышек</p>
+        <p className="muted small" style={{ marginTop: 6 }}>Баланс: {fmt(s.game.balance)} лепестков</p>
       </div>
       {BOOSTS.map((b) => {
         const lvl = s.game.boosts[b.kind];
@@ -228,7 +230,7 @@ function TasksSheet({ onNavigate }: { onNavigate: () => void }) {
   const [visitedChannel, setVisitedChannel] = useState(() => sessionStorage.getItem("legkost:channel") === "1");
   const link = referralLink(getUser().id);
 
-  const claim = (t: TaskMeta) => appStore.run({ type: "task", id: t.id }, (r) => `+${fmt(r ?? 0)} пёрышек · ${t.title}`);
+  const claim = (t: TaskMeta) => appStore.run({ type: "task", id: t.id }, (r) => `+${fmt(r ?? 0)} лепестков · ${t.title}`);
 
   const act = async (t: TaskMeta) => {
     if (t.external === "channel") {
@@ -255,7 +257,7 @@ function TasksSheet({ onNavigate }: { onNavigate: () => void }) {
   };
 
   const share = () => {
-    const text = "Смотри: 3 бесплатных урока от Алёны Ветровой — как худеть без диет. И пёрышки на гайды 💗";
+    const text = "Смотри: 3 бесплатных урока от Алёны Ветровой — как худеть без диет. И лепестки на гайды 💗";
     openLink(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`);
   };
 
@@ -263,21 +265,20 @@ function TasksSheet({ onNavigate }: { onNavigate: () => void }) {
     <div className="stack">
       <div>
         <div className="eyebrow">Задания</div>
-        <h2 className="h2">Пёрышки за полезное</h2>
+        <h2 className="h2">Лепестки за полезное</h2>
       </div>
 
-      <div className="card card--pink grain">
+      <div className="card card--ink grain">
         <b className="h3">Пригласите подругу</b>
         <p className="muted small" style={{ margin: "4px 0 12px" }}>
-          +{fmt(REFERRAL_REWARD)} пёрышек за каждую подругу, которая откроет уроки. Приглашено: {s.progress.referrals}
+          +{fmt(REFERRAL_REWARD)} лепестков за каждую подругу, которая откроет уроки. Приглашено: {s.progress.referrals}
         </p>
         <div className="row">
-          <button className="btn btn-sm grow" style={{ background: "#fff", color: "var(--pink-deep)" }} onClick={share}>
+          <button className="btn btn-sm btn-lime grow" onClick={share}>
             <IconShare width={16} /> Поделиться
           </button>
           <button
             className="btn btn-sm btn-ghost"
-            style={{ borderColor: "rgba(255,255,255,.5)" }}
             onClick={() =>
               navigator.clipboard?.writeText(link).then(
                 () => toast.success("Ссылка скопирована"),

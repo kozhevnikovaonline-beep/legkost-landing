@@ -7,7 +7,7 @@
 export type BoostKind = "tap" | "energy" | "regen";
 
 export interface GameState {
-  /** Текущий баланс «пёрышек» */
+  /** Текущий баланс «лепестков» */
   balance: number;
   /** Сколько заработано за всё время (для уровня) */
   totalEarned: number;
@@ -34,7 +34,7 @@ export interface ProgressState {
   tasksClaimed: string[];
   /** Открытые материалы и купленные продукты */
   owned: string[];
-  /** Активированные скидки за пёрышки: id продукта → скидка в ₽ */
+  /** Активированные скидки за лепестки: id продукта → скидка в ₽ */
   coupons: Record<string, number>;
   /** Сколько друзей пришло по приглашению (считает только сервер) */
   referrals: number;

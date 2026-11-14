@@ -17,7 +17,7 @@ export function Feather({ size }: { size?: "lg" }) {
 
 export function Balance({ value }: { value: number }) {
   return (
-    <button className="balance" onClick={() => navigate({ name: "tap" })} aria-label={`Баланс: ${fmt(value)} пёрышек`}>
+    <button className="balance" onClick={() => navigate({ name: "tap" })} aria-label={`Баланс: ${fmt(value)} лепестков`}>
       <Feather />
       {compact(value)}
     </button>

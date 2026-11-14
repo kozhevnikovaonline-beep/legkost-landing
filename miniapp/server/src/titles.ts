@@ -14,9 +14,7 @@ const TITLES: Record<string, string> = {
   "guide-posture": "Гайд «Осанка и живот»",
   "guide-cellulite": "Гайд «Гладкая кожа»",
   "guide-cortisol": "Гайд «Кортизол»",
-  "guide-dry": "Гайд «Сушка»",
   "guide-menu14": "Меню на 14 дней",
-  "guide-system": "Гайд «СИСТЕМА»",
 };
 
 export const productTitle = (id: string) => TITLES[id] ?? "ЛЁГКОСТЬ";

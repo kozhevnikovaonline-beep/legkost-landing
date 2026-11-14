@@ -3,7 +3,7 @@ import type { SVGProps } from "react";
 type P = SVGProps<SVGSVGElement>;
 const base = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24" } as const;
 
-/** Пёрышко — фирменный знак (как на логотипе сайта) */
+/** Лепесток — фирменный знак (как на логотипе сайта) */
 export const FeatherGlyph = (p: P) => (
   <svg viewBox="0 0 64 64" fill="none" stroke="#fff" strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...p}>
     <path d="M17 47c0-15 9-25 29-27-2 17-12 26-29 27zM17 47l12-12" />

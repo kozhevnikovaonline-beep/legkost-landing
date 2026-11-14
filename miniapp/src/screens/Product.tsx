@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hint } from "../components/Hint";
 import { finalPrice } from "../../shared/actions.ts";
 import { catalogById, minPriceRub, BUNDLES } from "../../shared/catalog.ts";
 import { ECONOMY, maxDiscountRub } from "../../shared/economy.ts";
@@ -64,7 +65,7 @@ export function Product({ id }: { id: string }) {
   } else if (isGuide) {
     main =
       s.game.balance >= featherPrice
-        ? { text: `Открыть за ${fmt(featherPrice)} пёрышек`, onClick: () => void buyWithFeathers() }
+        ? { text: `Открыть за ${fmt(featherPrice)} лепестков`, onClick: () => void buyWithFeathers() }
         : { text: `Купить за ${rub(price)}`, onClick: () => void pay() };
   } else {
     main = { text: `Оплатить ${rub(price)}`, onClick: () => void pay() };
@@ -120,7 +121,8 @@ export function Product({ id }: { id: string }) {
 
       {!owned && (
         <section className="section">
-          <div className="card stack">
+          <div className="card stack has-hint">
+            <Hint title="Цена и скидка" text="Лепестки можно обменять на скидку: 100 лепестков = 1 ₽, максимум 30% цены. Гайды можно открыть целиком за лепестки или купить за рубли." />
             <div className="row" style={{ justifyContent: "space-between" }}>
               <span className="muted">Цена</span>
               <span className="price">
@@ -130,17 +132,17 @@ export function Product({ id }: { id: string }) {
             </div>
             {isGuide ? (
               <div className="row" style={{ justifyContent: "space-between" }}>
-                <span className="muted">или за пёрышки</span>
+                <span className="muted">или за лепестки</span>
                 <span className="chip"><Feather /> {fmt(featherPrice)}</span>
               </div>
             ) : (
               <button className="btn btn-soft btn-block" onClick={() => setDiscountOpen(true)}>
-                <Feather /> {coupon > 0 ? `Скидка ${rub(coupon)} активна · увеличить` : "Обменять пёрышки на скидку"}
+                <Feather /> {coupon > 0 ? `Скидка ${rub(coupon)} активна · увеличить` : "Обменять лепестки на скидку"}
               </button>
             )}
             {isGuide && s.game.balance < featherPrice && (
               <p className="small muted">
-                Не хватает {fmt(featherPrice - s.game.balance)} пёрышек.{" "}
+                Не хватает {fmt(featherPrice - s.game.balance)} лепестков.{" "}
                 <button className="link-btn" onClick={() => navigate({ name: "tap" })}>Натапать →</button>
               </p>
             )}
@@ -167,7 +169,7 @@ export function Product({ id }: { id: string }) {
 
       {main && <MainAction text={main.text} onClick={main.onClick} loading={busy} disabled={main.disabled} shine={!owned} visible={!discountOpen} />}
 
-      <Sheet open={discountOpen} onClose={() => setDiscountOpen(false)} label="Скидка за пёрышки">
+      <Sheet open={discountOpen} onClose={() => setDiscountOpen(false)} label="Скидка за лепестки">
         <DiscountSheet productId={id} onDone={() => setDiscountOpen(false)} />
       </Sheet>
     </main>
@@ -186,15 +188,15 @@ function DiscountSheet({ productId, onDone }: { productId: string; onDone: () =>
   return (
     <div className="discount">
       <div>
-        <div className="eyebrow">Скидка за пёрышки</div>
-        <h2 className="h2">{fmt(ECONOMY.feathersPerRub)} пёрышек = 1 ₽</h2>
+        <div className="eyebrow">Скидка за лепестки</div>
+        <h2 className="h2">{fmt(ECONOMY.feathersPerRub)} лепестков = 1 ₽</h2>
         <p className="muted small" style={{ marginTop: 6 }}>
           Можно оплатить до 30% цены — до {rub(limit)}. Уже активировано: {rub(already)}.
         </p>
       </div>
       {maxAdd <= 0 ? (
         <div className="card small">
-          {already >= limit ? "Максимальная скидка уже активирована 🎉" : "Пока не хватает пёрышек даже на 1 ₽ скидки. Потапайте и возвращайтесь!"}
+          {already >= limit ? "Максимальная скидка уже активирована 🎉" : "Пока не хватает лепестков даже на 1 ₽ скидки. Потапайте и возвращайтесь!"}
         </div>
       ) : (
         <>

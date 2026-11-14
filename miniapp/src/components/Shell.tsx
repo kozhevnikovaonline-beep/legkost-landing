@@ -21,11 +21,11 @@ export function TabBar({ active, dots }: { active: Tab | null; dots: Partial<Rec
       <div className="tabbar__inner">
         {item("home", "Главная", <IconHome />)}
         {item("lessons", "Уроки", <IconPlay />)}
-        <button className="tab tab--center" aria-current={active === "tap" ? "page" : undefined} onClick={() => go("tap")} aria-label="Пёрышки">
+        <button className="tab tab--center" aria-current={active === "tap" ? "page" : undefined} onClick={() => go("tap")} aria-label="Лепестки">
           <span className="tab__orb">
             <FeatherGlyph />
           </span>
-          Пёрышки
+          Лепестки
           {dots.tap && <i className="tab__dot" style={{ top: -22 }} aria-label="есть награда" />}
         </button>
         {item("shop", "Магазин", <IconBag />)}

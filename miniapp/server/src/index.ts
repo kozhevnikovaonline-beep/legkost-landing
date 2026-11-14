@@ -4,7 +4,7 @@
  *
  * API (все запросы с заголовком Authorization: tma <initData>):
  *   GET  /api/state?start=<start_param>   состояние пользователя (+ учёт реферала)
- *   POST /api/action    { type, ... }      действие (тапы, задания, покупки за пёрышки…)
+ *   POST /api/action    { type, ... }      действие (тапы, задания, покупки за лепестки…)
  *   POST /api/checkout  { productId, planId } ссылка на оплату (Telegram Payments)
  *   GET  /health
  */
@@ -70,7 +70,7 @@ function applyReferral(user: UserRecord, created: boolean, startParam: string | 
     progress: { ...ref.state.progress, referrals: ref.state.progress.referrals + 1 },
   };
   void tg
-    .call("sendMessage", { chat_id: refId, text: `🎉 ${user.firstName} открыла уроки по вашей ссылке! +${REFERRAL_REWARD} пёрышек` })
+    .call("sendMessage", { chat_id: refId, text: `🎉 ${user.firstName} открыла уроки по вашей ссылке! +${REFERRAL_REWARD} лепестков` })
     .catch(() => undefined);
 }
 

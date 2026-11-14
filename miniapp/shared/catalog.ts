@@ -12,9 +12,9 @@ export interface PricePlan {
 
 export interface CatalogItem {
   id: string;
-  /** free — открывается бесплатно; guide — гайд (₽ или пёрышки); paid — только ₽ (пёрышки дают скидку) */
+  /** free — открывается бесплатно; guide — гайд (₽ или лепестки); paid — только ₽ (лепестки дают скидку) */
   kind: "free" | "guide" | "paid";
-  /** Цена в пёрышках для покупки целиком (только guide) */
+  /** Цена в лепестках для покупки целиком (только guide) */
   priceFeathers?: number;
   plans: PricePlan[];
 }
@@ -34,11 +34,9 @@ export const CATALOG: CatalogItem[] = [
   { id: "guide-posture", kind: "guide", priceFeathers: 8000, plans: one(390) },
   { id: "guide-cellulite", kind: "guide", priceFeathers: 8000, plans: one(390) },
   { id: "guide-cortisol", kind: "guide", priceFeathers: 10000, plans: one(490) },
-  { id: "guide-dry", kind: "guide", priceFeathers: 12000, plans: one(590) },
   { id: "guide-menu14", kind: "guide", priceFeathers: 12000, plans: one(590) },
-  { id: "guide-system", kind: "guide", priceFeathers: 16000, plans: one(790) },
 
-  // Платные форматы (пёрышки → скидка до 30%)
+  // Платные форматы (лепестки → скидка до 30%)
   { id: "marathon-edema", kind: "paid", plans: one(490, "7 дней") },
   { id: "club", kind: "paid", plans: [{ id: "1m", label: "1 месяц", priceRub: 990 }] },
   { id: "course-abs", kind: "paid", plans: one(1490) },
@@ -58,11 +56,11 @@ export const CATALOG: CatalogItem[] = [
     id: "personal",
     kind: "paid",
     plans: [
-      { id: "1m", label: "1 месяц", priceRub: 3800 },
-      { id: "2m", label: "2 месяца", priceRub: 6000 },
-      { id: "3m", label: "3 месяца", priceRub: 9100 },
-      { id: "4m", label: "4 месяца", priceRub: 12800 },
-      { id: "6m", label: "6 месяцев", priceRub: 19500 },
+      { id: "1m", label: "1 месяц", priceRub: 7900 },
+      { id: "2m", label: "2 месяца", priceRub: 12500 },
+      { id: "3m", label: "3 месяца", priceRub: 18900 },
+      { id: "4m", label: "4 месяца", priceRub: 26600 },
+      { id: "6m", label: "6 месяцев", priceRub: 40500 },
     ],
   },
   { id: "system", kind: "paid", plans: one(5690, "31 день") },
@@ -70,16 +68,15 @@ export const CATALOG: CatalogItem[] = [
 
 export const catalogById = new Map(CATALOG.map((i) => [i.id, i]));
 
-/** Минимальная цена продукта — от неё считается лимит скидки пёрышками */
+/** Минимальная цена продукта — от неё считается лимит скидки лепестками */
 export const minPriceRub = (item: CatalogItem) => Math.min(...item.plans.map((p) => p.priceRub));
 
 /** Что входит в продукт: при оплате эти материалы открываются автоматически */
 export const BUNDLES: Record<string, string[]> = {
-  system: ["guide-posture", "guide-pelvic", "guide-desserts", "guide-dry", "guide-system"],
+  system: ["guide-posture", "guide-pelvic", "guide-desserts"],
   "course-postpartum": ["guide-pelvic"],
   "course-abs": ["guide-posture"],
   "course-hormones": ["guide-cortisol"],
-  "course-dry": ["guide-dry"],
   "marathon-edema": ["free-edema"],
 };
 

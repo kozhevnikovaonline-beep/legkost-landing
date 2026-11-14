@@ -15,13 +15,14 @@ export type Route =
   | { name: "product"; id: string }
   | { name: "quiz"; id: string }
   | { name: "materials" }
-  | { name: "author" };
+  | { name: "author" }
+  | { name: "next" };
 
 function parse(hash: string): Route {
   const [, a, b] = hash.replace(/^#/, "").split("/");
   if (a && (TABS as string[]).includes(a)) return { name: a as Tab };
   if (b && (a === "lesson" || a === "guide" || a === "product" || a === "quiz")) return { name: a, id: decodeURIComponent(b) };
-  if (a === "materials" || a === "author") return { name: a };
+  if (a === "materials" || a === "author" || a === "next") return { name: a };
   return { name: "home" };
 }
 

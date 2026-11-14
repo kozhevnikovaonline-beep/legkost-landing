@@ -39,7 +39,7 @@ export function Materials() {
         <Empty
           icon="📘"
           title="Пока пусто"
-          text="Начните с бесплатных уроков — материалы к ним появятся здесь. А гайды можно открыть за пёрышки."
+          text="Начните с бесплатных уроков — материалы к ним появятся здесь. А гайды можно открыть за лепестки."
           action={<button className="btn btn-primary" onClick={() => navigate({ name: "shop" })}>В магазин</button>}
         />
       ) : (

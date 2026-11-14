@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Hint } from "../components/Hint";
 import { finalPrice } from "../../shared/actions.ts";
 import { catalogById, minPriceRub } from "../../shared/catalog.ts";
 import { CATEGORY_TITLES, PRODUCTS, productById, type Product, type ProductCategory } from "../content/products";
@@ -31,13 +32,14 @@ export function Shop() {
   return (
     <main className="screen">
       <TopBar balance={s.game.balance} />
-      <SectionHead eyebrow="Магазин" title={<>Тратьте <em>пёрышки</em> с пользой</>} />
+      <SectionHead eyebrow="Магазин" title={<>Тратьте <em>лепестки</em> с пользой</>} />
 
-      <div className="card shop-hero">
+      <div className="card shop-hero has-hint">
+        <Hint title="Ваш баланс" text="Лепестки копятся за тапы, уроки, тесты и ежедневные визиты. Гайды можно открыть целиком за лепестки, а на программы — получить скидку до 30%." />
         <Feather size="lg" />
         <div className="grow small">
-          <b>{fmt(s.game.balance)} пёрышек</b>
-          <div className="muted">Гайды — целиком за пёрышки. На программы — скидка до 30% ({ECONOMY.feathersPerRub} пёрышек = 1 ₽).</div>
+          <b>{fmt(s.game.balance)} лепестков</b>
+          <div className="muted">Гайды — целиком за лепестки. На программы — скидка до 30% ({ECONOMY.feathersPerRub} лепестков = 1 ₽).</div>
         </div>
       </div>
 
@@ -56,13 +58,13 @@ export function Shop() {
         </section>
       )}
       {!formatRes && filter !== "guides" && (
-        <button className="card card--pressable row" style={{ textAlign: "left", width: "100%", marginTop: 16 }} onClick={() => navigate({ name: "quiz", id: "format" })}>
+        <button className="card card--lime card--pressable row" style={{ textAlign: "left", width: "100%", marginTop: 16, padding: 18 }} onClick={() => navigate({ name: "quiz", id: "format" })}>
           <span className="task__icon">🎯</span>
           <div className="grow">
-            <b>Не знаете, что выбрать?</b>
-            <div className="muted small">6 вопросов — и Алёна подскажет формат · +500 пёрышек</div>
+            <b className="h3">Не знаете, что выбрать?</b>
+            <div className="muted small" style={{ marginTop: 2 }}>6 вопросов — и Алёна подскажет формат · +500 лепестков</div>
           </div>
-          <IconChevron width={18} />
+          <IconChevron width={20} />
         </button>
       )}
 
@@ -76,14 +78,17 @@ export function Shop() {
               const canAfford = s.game.balance >= (item.priceFeathers ?? Infinity);
               return (
                 <button key={p.id} className="card card--pressable guide-tile" onClick={() => navigate({ name: "product", id: p.id })}>
-                  <span className="guide-tile__emoji">{p.emoji}</span>
+                  <span className="guide-tile__img">
+                    <Img src={p.cover} alt="" />
+                    <span className="guide-tile__emoji">{p.emoji}</span>
+                  </span>
                   <span className="guide-tile__title">{p.title}</span>
                   <span className="muted small" style={{ lineHeight: 1.35 }}>{p.short}</span>
                   <span style={{ marginTop: "auto" }}>
                     {owned ? (
                       <span className="chip chip--lime">✓ Открыт</span>
                     ) : (
-                      <span className={`chip${canAfford ? "" : ""}`}>
+                      <span className={`chip${canAfford ? " chip--lime" : ""}`}>
                         <Feather /> {compact(item.priceFeathers!)} · {rub(item.plans[0]!.priceRub)}
                       </span>
                     )}

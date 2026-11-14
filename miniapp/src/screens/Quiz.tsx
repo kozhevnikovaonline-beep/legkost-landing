@@ -38,7 +38,7 @@ export function Quiz({ id }: { id: string }) {
     setBusy(true);
     const ok = await appStore.run({ type: "quiz", id: quiz.id, result: r.id });
     if (ok && !s.progress.tasksClaimed.includes(quiz.task)) {
-      await appStore.run({ type: "task", id: quiz.task }, (rw) => `+${rw} пёрышек за тест`);
+      await appStore.run({ type: "task", id: quiz.task }, (rw) => `+${rw} лепестков за тест`);
     }
     setBusy(false);
     setResult(r);
@@ -53,9 +53,9 @@ export function Quiz({ id }: { id: string }) {
     return (
       <main className="screen screen--sub">
         <SubBar title={quiz.title} />
-        <div className="card card--pink grain" style={{ textAlign: "center", padding: "28px 20px" }}>
+        <div className="card card--ink grain" style={{ textAlign: "center", padding: "28px 20px" }}>
           <div style={{ fontSize: 52 }}>{result.emoji}</div>
-          <div className="eyebrow" style={{ color: "#fff", justifyContent: "center", marginTop: 8 }}>Ваш результат</div>
+          <div className="eyebrow" style={{ justifyContent: "center", marginTop: 8 }}>Ваш результат</div>
           <h1 className="h1">{result.title}</h1>
         </div>
         <p style={{ marginTop: 18, fontSize: 16 }}>{result.text}</p>
@@ -105,7 +105,7 @@ export function Quiz({ id }: { id: string }) {
       {step === 0 && (
         <div className="card" style={{ marginBottom: 16 }}>
           <p>{quiz.intro}</p>
-          {!s.progress.tasksClaimed.includes(quiz.task) && <span className="chip" style={{ marginTop: 10 }}>+{TASK_REWARDS[quiz.task]} пёрышек за прохождение</span>}
+          {!s.progress.tasksClaimed.includes(quiz.task) && <span className="chip" style={{ marginTop: 10 }}>+{TASK_REWARDS[quiz.task]} лепестков за прохождение</span>}
         </div>
       )}
       <div className="row" style={{ justifyContent: "space-between", marginBottom: 8 }}>

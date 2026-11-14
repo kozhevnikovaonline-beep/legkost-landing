@@ -11,7 +11,7 @@ const ok = (r: ReturnType<typeof reduce>): UserState => {
 };
 
 describe("тапы и энергия", () => {
-  it("каждый тап тратит энергию и даёт пёрышки", () => {
+  it("каждый тап тратит энергию и даёт лепестки", () => {
     const s = createInitialState(T0);
     const r = reduce(s, { type: "taps", count: 10, sinceTs: T0 - 10_000 }, T0);
     expect(r.ok && r.accepted).toBe(10);
@@ -77,7 +77,7 @@ describe("магазин", () => {
     return { ...s, game: { ...s.game, balance: 200_000 } };
   };
 
-  it("гайд покупается за пёрышки по цене каталога", () => {
+  it("гайд покупается за лепестки по цене каталога", () => {
     const s = ok(reduce(rich(), { type: "buyFeathers", itemId: "guide-desserts" }, T0));
     expect(s.progress.owned).toContain("guide-desserts");
     expect(s.game.balance).toBe(200_000 - 6000);
@@ -85,12 +85,12 @@ describe("магазин", () => {
     expect(reduce(s, { type: "buyFeathers", itemId: "system" }, T0)).toEqual({ ok: false, error: "bad_request" });
   });
 
-  it("скидка пёрышками ограничена 30% цены и сгорает после оплаты", () => {
+  it("скидка лепестками ограничена 30% цены и сгорает после оплаты", () => {
     let s = ok(reduce(rich(), { type: "discount", productId: "system", rub: 1000 }, T0));
     expect(finalPrice(s, "system", 5690)).toBe(4690);
     expect(reduce(s, { type: "discount", productId: "system", rub: 1000 }, T0)).toEqual({ ok: false, error: "discount_limit" });
     s = grantPurchase(s, "system", T0);
-    expect(s.progress.owned).toEqual(expect.arrayContaining(["system", "guide-system", "guide-pelvic"]));
+    expect(s.progress.owned).toEqual(expect.arrayContaining(["system", "guide-posture", "guide-pelvic", "guide-desserts"]));
     expect(s.progress.coupons.system).toBeUndefined();
   });
 });

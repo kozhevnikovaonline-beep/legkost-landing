@@ -9,6 +9,7 @@ import { claimableTasks, lessonsProgress } from "../store/selectors";
 import { fmt, greeting } from "../lib/format";
 import { navigate } from "../lib/router";
 import { getUser } from "../telegram/sdk";
+import { Hint } from "../components/Hint";
 import { isDemoBackend } from "../config";
 
 export function Home() {
@@ -52,16 +53,17 @@ export function Home() {
           </div>
         </button>
       ) : (
-        <div className="card card--pink grain" style={{ marginTop: 10 }}>
-          <div className="eyebrow" style={{ color: "#fff" }}>Мини-курс пройден</div>
-          <h2 className="h2">Вы прошли все 3 урока 🏆</h2>
-          <p className="muted" style={{ marginTop: 6 }}>Бонус-эфир про гормоны уже открыт. Следующий шаг — подобрать формат, в котором вы дойдёте до результата.</p>
+        <div className="card card--ink grain has-hint" style={{ marginTop: 10 }}>
+          <Hint title="Мини-курс" text="Вы прошли все бесплатные уроки. Здесь — следующий шаг: основной курс «ЛЁГКОСТЬ» на 31 день и бонус-эфир про гормоны." />
+          <div className="eyebrow">Мини-курс пройден 🏆</div>
+          <h2 className="h2">А что <em>дальше?</em></h2>
+          <p className="muted" style={{ marginTop: 6 }}>Вы узнали, почему вес стоит, и сделали первые шаги. Теперь важно не остановиться — покажу, как за 31 день дойти до результата.</p>
           <div className="row" style={{ marginTop: 14, flexWrap: "wrap" }}>
-            <button className="btn btn-sm" style={{ background: "#fff", color: "var(--pink-deep)" }} onClick={() => navigate({ name: "guide", id: "bonus-hormones" })}>
-              Открыть эфир
+            <button className="btn btn-sm btn-lime" onClick={() => navigate({ name: "next" })}>
+              Что дальше →
             </button>
-            <button className="btn btn-sm btn-ghost" style={{ borderColor: "rgba(255,255,255,.5)" }} onClick={() => navigate({ name: "quiz", id: "format" })}>
-              Мой формат
+            <button className="btn btn-sm btn-ghost" onClick={() => navigate({ name: "guide", id: "bonus-hormones" })}>
+              Бонус-эфир
             </button>
           </div>
         </div>
@@ -69,16 +71,17 @@ export function Home() {
 
       {/* Ежедневная награда */}
       <section className="section">
-        <div className="card card--pink grain">
+        <div className="card card--ink grain has-hint">
+          <Hint title="Ежедневный подарок" text="Заходите каждый день и забирайте награду. Чем длиннее серия, тем больше: с 100 до 2 500 за 7-й день. Пропустили день — серия начнётся заново." />
           <div className="row">
             <div className="grow">
               <div className="h3">{daily.claimedToday ? "Награда получена" : "Ежедневный подарок"}</div>
               <p className="muted small">
-                {daily.claimedToday ? `Серия: ${daily.streak} дн. Возвращайтесь завтра!` : `День ${daily.nextStreak} подряд · +${fmt(daily.reward)} пёрышек`}
+                {daily.claimedToday ? `Серия: ${daily.streak} дн. Возвращайтесь завтра!` : `День ${daily.nextStreak} подряд · +${fmt(daily.reward)} лепестков`}
               </p>
             </div>
             {!daily.claimedToday && (
-              <button className="btn btn-sm" style={{ background: "#fff", color: "var(--pink-deep)" }} onClick={() => void appStore.run({ type: "daily" }, (r) => `+${fmt(r ?? 0)} пёрышек — так держать!`)}>
+              <button className="btn btn-sm btn-lime" onClick={() => void appStore.run({ type: "daily" }, (r) => `+${fmt(r ?? 0)} лепестков — так держать!`)}>
                 Забрать
               </button>
             )}
@@ -106,7 +109,7 @@ export function Home() {
             <span className="task__icon">🎁</span>
             <div className="grow">
               <b>Награды ждут: {tasks}</b>
-              <div className="muted small">Заберите пёрышки за выполненные задания</div>
+              <div className="muted small">Заберите лепестки за выполненные задания</div>
             </div>
             <IconChevron width={18} />
           </button>
@@ -115,7 +118,7 @@ export function Home() {
           <span className="task__icon">{typeRes?.emoji ?? "🧭"}</span>
           <div className="grow">
             <b>{typeRes ? `Ваш тип: ${typeRes.title.toLowerCase()}` : "Узнайте свой тип набора веса"}</b>
-            <div className="muted small">{typeRes ? "Пройти ещё раз или посмотреть советы" : "5 вопросов · 1 минута · +500 пёрышек"}</div>
+            <div className="muted small">{typeRes ? "Пройти ещё раз или посмотреть советы" : "5 вопросов · 1 минута · +500 лепестков"}</div>
           </div>
           <IconChevron width={18} />
         </button>
@@ -124,7 +127,8 @@ export function Home() {
       {/* Метод */}
       <section className="section">
         <SectionHead eyebrow="Метод «3 опоры»" title={<>Что такое <em>«Лёгкость»</em></>} />
-        <div className="card pillars">
+        <div className="card pillars has-hint">
+          <Hint title="Метод «3 опоры»" text="На этом держится вся система «ЛЁГКОСТЬ»: питание, движение и образ жизни работают вместе. В бесплатных уроках вы попробуете каждую опору." />
           {PILLARS.map((p) => (
             <div className="pillar" key={p.n}>
               <span className="pillar__n">{p.n}</span>
@@ -179,7 +183,7 @@ export function Home() {
         <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "shop" })}>
           <Feather size="lg" />
           <div className="grow">
-            <b>Обменяйте пёрышки на гайды</b>
+            <b>Обменяйте лепестки на гайды</b>
             <div className="muted small">ПП-десерты, меню на 14 дней, кортизол и другие</div>
           </div>
           <IconChevron width={18} />

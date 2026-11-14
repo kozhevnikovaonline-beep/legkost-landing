@@ -22,10 +22,10 @@ export function Onboarding() {
       setBusy(false);
       return;
     }
-    await appStore.run({ type: "task", id: "welcome" }, (r) => `+${r} пёрышек — подарок за старт 🎀`);
+    await appStore.run({ type: "task", id: "welcome" }, (r) => `+${r} лепестков — подарок за старт 🎀`);
     // Разрешение писать первым: бот будет присылать следующие уроки и напоминания
     const granted = await requestWriteAccess();
-    if (granted) await appStore.run({ type: "task", id: "notifications" }, (r) => `Напоминания включены · +${r} пёрышек`);
+    if (granted) await appStore.run({ type: "task", id: "notifications" }, (r) => `Напоминания включены · +${r} лепестков`);
     // Вкладка «Уроки» под первым уроком — «Назад» вернёт к списку уроков
     navigate({ name: "lessons" });
     navigate({ name: "lesson", id: "lesson-1" });
@@ -79,14 +79,14 @@ export function Onboarding() {
           <div className="onb__visual">
             <div className="onb__gift">
               {LESSONS.map((l) => (
-                <div key={l.id} className="card row" style={{ padding: 12 }}>
+                <div key={l.id} className={`card row${l.number > 1 ? " lesson-locked-mini" : ""}`} style={{ padding: 12 }}>
                   <div className="lesson-card__thumb" style={{ width: 64, height: 64, borderRadius: 14 }}>
                     <Img src={l.cover} alt="" />
                     <span className="lesson-card__num" style={{ fontSize: 22 }}>{l.number}</span>
                   </div>
                   <div className="grow">
                     <div style={{ fontWeight: 800, lineHeight: 1.25 }}>{l.title}</div>
-                    <div className="muted small">Урок {l.number} · {l.duration}</div>
+                    <div className="muted small">Урок {l.number} · {l.duration}{l.number > 1 ? " · 🔒 после урока " + (l.number - 1) : ""}</div>
                   </div>
                 </div>
               ))}
@@ -119,12 +119,12 @@ export function Onboarding() {
             </div>
           </div>
           <div className="onb__text" key="s2">
-            <div className="eyebrow" style={{ justifySelf: "center" }}>Пёрышки</div>
+            <div className="eyebrow" style={{ justifySelf: "center" }}>Лепестки</div>
             <h1 className="h1">
-              Тапайте — и <em>копите пёрышки</em>
+              Тапайте — и <em>копите лепестки</em>
             </h1>
             <p className="muted">
-              Пёрышки начисляются за тапы, уроки и ежедневные визиты. На них открываются гайды, а на программы — скидка до 30%.
+              Лепестки начисляются за тапы, уроки и ежедневные визиты. На них открываются гайды, а на программы — скидка до 30%.
             </p>
             <div className="row" style={{ justifyContent: "center" }}>
               <span className="chip">

@@ -22,5 +22,5 @@ export const TASKS: TaskMeta[] = [
   { id: "quiz-format", title: "Подобрать свой формат", hint: "Группа, 1:1 или «СИСТЕМА»", emoji: "🎯", go: { name: "quiz", id: "format" } },
   { id: "channel", title: "Подписаться на канал Алёны", hint: "Рецепты и эфиры", emoji: "📣", external: "channel" },
   { id: "notifications", title: "Включить напоминания", hint: "Бот напомнит об уроке", emoji: "🔔", external: "notifications" },
-  { id: "first-guide", title: "Открыть первый гайд за пёрышки", hint: "Загляните в магазин", emoji: "📘", go: { name: "shop" } },
+  { id: "first-guide", title: "Открыть первый гайд за лепестки", hint: "Загляните в магазин", emoji: "📘", go: { name: "shop" } },
 ];

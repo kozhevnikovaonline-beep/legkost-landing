@@ -4,7 +4,7 @@
  */
 import { catalogById, minPriceRub } from "../../shared/catalog.ts";
 import { ECONOMY, maxDiscountRub } from "../../shared/economy.ts";
-import { BRAND } from "../content/brand";
+import { BRAND, PILLARS } from "../content/brand";
 import { PROGRAM } from "../content/program";
 import { FormatCards, Included, NotSure, Proof, Stages } from "../components/Program";
 import { Feather, Img, MainAction, SubBar } from "../components/ui";
@@ -33,16 +33,30 @@ export function Next() {
         </p>
       </div>
 
-      <div className="card card--fuchsia grain" style={{ marginTop: 18, padding: "22px 20px" }}>
-        <div className="eyebrow">31 день · онлайн</div>
+      <div className="guide-hero" style={{ minHeight: 260, marginTop: 18 }}>
+        <Img src={BRAND.heroPhoto} alt="" />
+        <span className="chip chip--dark" style={{ alignSelf: "flex-start", marginBottom: 12 }}>31 день · онлайн</span>
         <h2 className="h2">{PROGRAM.title}</h2>
-        <p className="muted" style={{ marginTop: 10, lineHeight: 1.55 }}>
-          31 день по шагам: питание по тарелке, тренировки по 20 минут, сон и работа с отёками. Каждый день рядом куратор — вы не «сольётесь» на третий день.
-        </p>
-        <button className="btn btn-sm btn-lime" style={{ marginTop: 16 }} onClick={() => navigate({ name: "program" })}>
-          Подробнее о программе →
+        <p style={{ opacity: 0.88, marginTop: 8, fontSize: 14, lineHeight: 1.5 }}>{PROGRAM.short}</p>
+        <button className="btn btn-sm btn-lime" style={{ marginTop: 16, alignSelf: "flex-start" }} onClick={() => navigate({ name: "formats" })}>
+          Записаться →
         </button>
       </div>
+
+      <section className="section">
+        <div className="eyebrow">Метод «3 опоры»</div>
+        <div className="card pillars">
+          {PILLARS.map((p) => (
+            <div className="pillar" key={p.n}>
+              <span className="pillar__n">{p.n}</span>
+              <div>
+                <b>{p.title}</b>
+                <p className="muted small" style={{ marginTop: 2, lineHeight: 1.5 }}>{p.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="section">
         <div className="eyebrow">Программа на 31 день</div>

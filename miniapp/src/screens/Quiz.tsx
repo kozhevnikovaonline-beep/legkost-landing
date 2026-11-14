@@ -55,7 +55,7 @@ export function Quiz({ id }: { id: string }) {
         <SubBar title={quiz.title} />
         <div className="card card--ink grain" style={{ textAlign: "center", padding: "28px 20px" }}>
           <div style={{ fontSize: 52 }}>{result.emoji}</div>
-          <div className="eyebrow" style={{ justifyContent: "center", marginTop: 8 }}>Ваш результат</div>
+          <div className="eyebrow" style={{ margin: "8px auto 12px" }}>Ваш результат</div>
           <h1 className="h1">{result.title}</h1>
         </div>
         <p style={{ marginTop: 18, fontSize: 16 }}>{result.text}</p>

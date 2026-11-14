@@ -27,7 +27,7 @@ export function Lessons() {
           <span style={{ fontSize: 30 }}>🏆</span>
           <div className="grow">
             <div className="eyebrow" style={{ marginBottom: 4 }}>Мини-курс пройден</div>
-            <b className="h3">А что дальше? Основной курс на 31 день</b>
+            <b className="h3">А что дальше? Онлайн-программа на 31 день</b>
           </div>
           <IconChevron width={20} />
         </button>

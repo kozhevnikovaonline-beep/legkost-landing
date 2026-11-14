@@ -21,6 +21,8 @@ import { Profile } from "./screens/Profile";
 import { Materials } from "./screens/Materials";
 import { Author } from "./screens/Author";
 import { Next } from "./screens/Next";
+import { Program } from "./screens/Program";
+import { Formats } from "./screens/Formats";
 
 /** Глубокие ссылки: t.me/<bot>/<app>?startapp=lesson-2 | guide-cortisol | system | shop | tap */
 function routeFromStartParam(p: string | null): Route | null {
@@ -30,7 +32,7 @@ function routeFromStartParam(p: string | null): Route | null {
   if (productById(p)) return { name: "product", id: p };
   if (guideById(p)) return { name: "guide", id: p };
   if (p === "quiz-type" || p === "quiz-format") return { name: "quiz", id: p.slice(5) };
-  if (p === "next") return { name: "next" };
+  if (p === "next" || p === "program" || p === "formats") return { name: p };
   return null;
 }
 
@@ -60,6 +62,10 @@ function Screen({ route }: { route: Route }) {
       return <Author />;
     case "next":
       return <Next />;
+    case "program":
+      return <Program />;
+    case "formats":
+      return <Formats />;
   }
 }
 

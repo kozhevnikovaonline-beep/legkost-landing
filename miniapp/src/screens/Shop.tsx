@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Hint } from "../components/Hint";
+import { programMinPrice } from "../components/Program";
+import { PROGRAM } from "../content/program";
+import { BRAND } from "../content/brand";
 import { finalPrice } from "../../shared/actions.ts";
 import { catalogById, minPriceRub } from "../../shared/catalog.ts";
 import { CATEGORY_TITLES, PRODUCTS, productById, type Product, type ProductCategory } from "../content/products";
@@ -16,7 +19,6 @@ type Filter = "all" | ProductCategory;
 const FILTERS: { id: Filter; label: string }[] = [
   { id: "all", label: "Всё" },
   { id: "guides", label: "Гайды" },
-  { id: "formats", label: "Форматы" },
   { id: "courses", label: "Курсы" },
 ];
 
@@ -100,17 +102,44 @@ export function Shop() {
         </section>
       )}
 
-      {(["formats", "courses"] as const).filter(show).map((c) => (
-        <section className="section" key={c}>
-          <SectionHead title={CATEGORY_TITLES[c]} />
+      {show("courses") && (
+        <section className="section">
+          <SectionHead title={CATEGORY_TITLES.courses} />
           <div className="stack">
-            {PRODUCTS.filter((p) => p.category === c).map((p) => (
+            <ProgramCard />
+            {PRODUCTS.filter((p) => p.category === "courses").map((p) => (
               <ProductCard key={p.id} p={p} />
             ))}
           </div>
         </section>
-      ))}
+      )}
     </main>
+  );
+}
+
+/** Онлайн-программа «Лёгкость» — первая в курсах, открывает описание с форматами */
+function ProgramCard() {
+  return (
+    <button className="card card--pressable product-card" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "program" })}>
+      <div className="product-card__img">
+        <Img src={BRAND.heroPhoto} alt="" />
+        <div className="product-card__badges">
+          <span className="chip chip--dark">31 день</span>
+        </div>
+        <span className="product-card__emoji">🌸</span>
+      </div>
+      <div className="product-card__body">
+        <b className="h3">{PROGRAM.title} за 31 день</b>
+        <span className="muted small" style={{ lineHeight: 1.5 }}>Групповой формат или личное сопровождение 1:1</span>
+        <div className="row" style={{ justifyContent: "space-between", marginTop: 4 }}>
+          <div className="price">
+            <span className="muted small">от</span>
+            <b>{rub(programMinPrice())}</b>
+          </div>
+          <span className="btn btn-primary btn-sm">Подробнее</span>
+        </div>
+      </div>
+    </button>
   );
 }
 

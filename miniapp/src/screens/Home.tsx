@@ -1,8 +1,8 @@
 import { DAILY_REWARDS, dailyStatus } from "../../shared/economy.ts";
-import { BRAND, PILLARS, REVIEWS } from "../content/brand";
+import { BRAND } from "../content/brand";
 import { lessonById } from "../content/lessons";
 import { quizById } from "../content/quizzes";
-import { Feather, Img, Progress, SectionHead, TopBar } from "../components/ui";
+import { Feather, Img, Progress, TopBar } from "../components/ui";
 import { IconChevron } from "../components/Icons";
 import { appStore, useUserState } from "../store/appStore";
 import { claimableTasks, lessonsProgress } from "../store/selectors";
@@ -54,7 +54,7 @@ export function Home() {
         </button>
       ) : (
         <div className="card card--ink grain has-hint" style={{ marginTop: 10 }}>
-          <Hint title="Мини-курс" text="Вы прошли все бесплатные уроки. Здесь — следующий шаг: основной курс «ЛЁГКОСТЬ» на 31 день и бонус-эфир про гормоны." />
+          <Hint title="Мини-курс" text="Вы прошли все бесплатные уроки. Здесь — следующий шаг: онлайн-программа «ЛЁГКОСТЬ» на 31 день и бонус-эфир про гормоны." />
           <div className="eyebrow">Мини-курс пройден 🏆</div>
           <h2 className="h2">А что <em>дальше?</em></h2>
           <p className="muted" style={{ marginTop: 6 }}>Вы узнали, почему вес стоит, и сделали первые шаги. Теперь важно не остановиться — покажу, как за 31 день дойти до результата.</p>
@@ -69,14 +69,14 @@ export function Home() {
         </div>
       )}
 
-      {/* Ежедневная награда */}
+      {/* Ежедневная награда: тёмная, пока есть что забрать; белая, когда получена */}
       <section className="section">
-        <div className="card card--ink grain has-hint">
+        <div className={`card has-hint${daily.claimedToday ? "" : " card--ink grain"}`}>
           <Hint title="Ежедневный подарок" text="Заходите каждый день и забирайте награду. Чем длиннее серия, тем больше: с 100 до 2 500 за 7-й день. Пропустили день — серия начнётся заново." />
           <div className="row">
             <div className="grow">
-              <div className="h3">{daily.claimedToday ? "Награда получена" : "Ежедневный подарок"}</div>
-              <p className="muted small">
+              <div className="h3">{daily.claimedToday ? "Награда получена ✓" : "Ежедневный подарок"}</div>
+              <p className="muted small" style={{ marginTop: 4 }}>
                 {daily.claimedToday ? `Серия: ${daily.streak} дн. Возвращайтесь завтра!` : `День ${daily.nextStreak} подряд · +${fmt(daily.reward)} лепестков`}
               </p>
             </div>
@@ -114,56 +114,41 @@ export function Home() {
             <IconChevron width={18} />
           </button>
         )}
-        <button className="card card--pressable row" style={{ textAlign: "left" }} onClick={() => navigate({ name: "quiz", id: "type" })}>
+        <button className="card card--fuchsia grain card--pressable row" style={{ textAlign: "left", padding: 18 }} onClick={() => navigate({ name: "quiz", id: "type" })}>
           <span className="task__icon">{typeRes?.emoji ?? "🧭"}</span>
           <div className="grow">
-            <b>{typeRes ? `Ваш тип: ${typeRes.title.toLowerCase()}` : "Узнайте свой тип набора веса"}</b>
-            <div className="muted small">{typeRes ? "Пройти ещё раз или посмотреть советы" : "5 вопросов · 1 минута · +500 лепестков"}</div>
+            <b className="h3">{typeRes ? `Ваш тип: ${typeRes.title.toLowerCase()}` : "Узнайте свой тип набора веса"}</b>
+            <div className="muted small" style={{ marginTop: 4 }}>{typeRes ? "Пройти ещё раз или посмотреть советы" : "5 вопросов · 1 минута · +500 лепестков"}</div>
           </div>
-          <IconChevron width={18} />
+          <IconChevron width={20} />
         </button>
       </section>
 
-      {/* Метод */}
+      {/* Онлайн-программа */}
       <section className="section">
-        <SectionHead eyebrow="Метод «3 опоры»" title={<>Что такое <em>«Лёгкость»</em></>} />
-        <div className="card pillars has-hint">
-          <Hint title="Метод «3 опоры»" text="На этом держится вся система «ЛЁГКОСТЬ»: питание, движение и образ жизни работают вместе. В бесплатных уроках вы попробуете каждую опору." />
-          {PILLARS.map((p) => (
-            <div className="pillar" key={p.n}>
-              <span className="pillar__n">{p.n}</span>
-              <div>
-                <b>{p.title}</b>
-                <p className="muted small">{p.text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="stats-row" style={{ marginTop: 12 }}>
-          <div className="stat"><b>2 400+</b><span>учениц прошли систему</span></div>
-          <div className="stat"><b>−6,8</b><span>кг в среднем за 31 день</span></div>
-          <div className="stat"><b>87%</b><span>удержали вес через полгода</span></div>
+        <div className="card program-card">
+          <Img src={BRAND.heroPhoto} alt="" className="program-card__img" />
+          <div className="program-card__body">
+            <div className="eyebrow">31 день · онлайн</div>
+            <h2 className="h2">Онлайн-программа для женщин <em>«Лёгкость»</em></h2>
+            <p className="muted" style={{ marginTop: 10 }}>Питание без подсчёта калорий, тренировки по 20 минут дома, сон и работа с отёками — и куратор рядом каждый день. В среднем −5–7 кг за 31 день без срывов.</p>
+            <button className="btn btn-primary btn-sm" style={{ marginTop: 16 }} onClick={() => navigate({ name: "program" })}>
+              Подробнее →
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Отзывы */}
+      {/* Обмен лепестков */}
       <section className="section">
-        <SectionHead eyebrow="Отзывы" title="Они тоже начинали «с понедельника»" />
-        <div className="h-scroll">
-          {REVIEWS.map((r) => (
-            <article className="card review" key={r.name}>
-              <div className="review__head">
-                <Img src={r.photo} alt={r.name} />
-                <div>
-                  <b>{r.name}, {r.age}</b>
-                  <div className="muted small">{r.city}</div>
-                </div>
-              </div>
-              <span className="chip" style={{ marginBottom: 8 }}>{r.result}</span>
-              <p className="muted small">{r.text}</p>
-            </article>
-          ))}
-        </div>
+        <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "shop" })}>
+          <Feather size="lg" />
+          <div className="grow">
+            <b>Обменяйте лепестки на гайды</b>
+            <div className="muted small" style={{ marginTop: 2 }}>ПП-десерты, меню на 14 дней, кортизол и другие</div>
+          </div>
+          <IconChevron width={18} />
+        </button>
       </section>
 
       {/* Автор */}
@@ -171,20 +156,9 @@ export function Home() {
         <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "author" })}>
           <Img src={BRAND.authorPhoto} alt={BRAND.author} className="avatar" />
           <div className="grow">
-            <div className="eyebrow" style={{ marginBottom: 4 }}>Автор системы</div>
+            <div className="eyebrow" style={{ marginBottom: 6 }}>Автор системы</div>
             <b>{BRAND.author}</b>
-            <div className="muted small">{BRAND.authorRole}</div>
-          </div>
-          <IconChevron width={18} />
-        </button>
-      </section>
-
-      <section className="section">
-        <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "shop" })}>
-          <Feather size="lg" />
-          <div className="grow">
-            <b>Обменяйте лепестки на гайды</b>
-            <div className="muted small">ПП-десерты, меню на 14 дней, кортизол и другие</div>
+            <div className="muted small" style={{ marginTop: 2 }}>{BRAND.authorRole}</div>
           </div>
           <IconChevron width={18} />
         </button>

@@ -77,7 +77,6 @@ export function Product({ id }: { id: string }) {
 
       <div className="guide-hero">
         <Img src={p.cover} alt="" />
-        <span className="bg-word">{(p.guideId && guideById(p.guideId)?.bgWord) || (p.category === "formats" ? "ФОРМАТ" : "КУРС")}</span>
         {p.badge && <span className="chip chip--dark" style={{ alignSelf: "flex-start", marginBottom: 10 }}>{p.badge}</span>}
         <h1 className="h2">{p.title}</h1>
         <p style={{ opacity: 0.85, marginTop: 6, fontSize: 14 }}>{p.short}</p>

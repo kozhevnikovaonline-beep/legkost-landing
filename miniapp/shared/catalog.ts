@@ -37,7 +37,7 @@ export const CATALOG: CatalogItem[] = [
   { id: "guide-menu14", kind: "guide", priceFeathers: 12000, plans: one(590) },
 
   // Платные форматы (лепестки → скидка до 30%)
-  { id: "marathon-edema", kind: "paid", plans: one(490, "7 дней") },
+  { id: "marathon-edema", kind: "paid", plans: one(990, "7 дней") },
   { id: "club", kind: "paid", plans: [{ id: "1m", label: "1 месяц", priceRub: 990 }] },
   { id: "course-abs", kind: "paid", plans: one(1490) },
   { id: "course-dry", kind: "paid", plans: one(1990) },

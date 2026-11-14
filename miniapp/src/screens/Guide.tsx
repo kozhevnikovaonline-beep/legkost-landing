@@ -46,7 +46,6 @@ export function Guide({ id }: { id: string }) {
       <SubBar title={g.title} />
       <div className="guide-hero">
         <Img src={g.cover} alt="" />
-        <span className="bg-word">{g.bgWord}</span>
         <span className="chip chip--dark" style={{ alignSelf: "flex-start", marginBottom: 10 }}>
           {g.emoji} Гайд · {g.readMinutes} мин
         </span>

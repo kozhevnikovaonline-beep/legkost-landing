@@ -16,13 +16,15 @@ export type Route =
   | { name: "quiz"; id: string }
   | { name: "materials" }
   | { name: "author" }
-  | { name: "next" };
+  | { name: "next" }
+  | { name: "program" }
+  | { name: "formats" };
 
 function parse(hash: string): Route {
   const [, a, b] = hash.replace(/^#/, "").split("/");
   if (a && (TABS as string[]).includes(a)) return { name: a as Tab };
   if (b && (a === "lesson" || a === "guide" || a === "product" || a === "quiz")) return { name: a, id: decodeURIComponent(b) };
-  if (a === "materials" || a === "author" || a === "next") return { name: a };
+  if (a === "materials" || a === "author" || a === "next" || a === "program" || a === "formats") return { name: a };
   return { name: "home" };
 }
 

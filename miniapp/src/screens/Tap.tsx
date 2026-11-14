@@ -106,7 +106,7 @@ export function Tap() {
       <div className="tap-screen">
         <TopBar balance={g.balance} />
 
-        <div className="card has-hint" style={{ padding: 14 }}>
+        <div className="card has-hint" style={{ padding: "14px 46px 14px 14px" }}>
           <Hint title="Как это работает" text="Тапайте по монете — за каждый тап начисляются лепестки и тратится энергия. Энергия восстанавливается сама. Бусты усиливают тап, задания дают крупные награды, а за лепестки в Магазине открываются гайды и скидки." />
           <div className="row">
             <div className="grow">

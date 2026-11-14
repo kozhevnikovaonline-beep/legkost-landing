@@ -392,21 +392,30 @@ h1,h2,h3,p{margin:0}
 .author-photo .hand{position:absolute;right:16px;bottom:14px;font-size:34px;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.6)}
 
 /* ---------- Онбординг и квиз ---------- */
-.onb{min-height:var(--vh);display:flex;flex-direction:column;padding:calc(var(--safe-top) + 12px) 20px calc(var(--safe-bottom) + 110px);max-width:560px;margin:0 auto;position:relative;overflow:hidden}
+.onb{height:var(--vh);min-height:0;display:flex;flex-direction:column;padding:calc(var(--safe-top) + 10px) 20px calc(var(--safe-bottom) + 96px);max-width:560px;margin:0 auto;position:relative;overflow:hidden}
 .onb__dots{display:flex;gap:6px;justify-content:center;margin-bottom:18px}
 .onb__dots i{width:8px;height:8px;border-radius:9px;background:var(--line-2);transition:all .3s var(--ease)}
 .onb__dots i.on{width:26px;background:var(--pink)}
-.onb__visual{position:relative;flex:1;display:grid;place-items:center;min-height:260px}
+.onb__visual{position:relative;flex:1 1 auto;display:grid;place-items:center;min-height:0}
 .onb__photo{width:min(70vw,280px);aspect-ratio:4/5;border-radius:140px 140px 28px 28px;overflow:hidden;box-shadow:var(--shadow)}
 .onb__photo img{width:100%;height:100%;object-fit:cover}
 .onb__visual--welcome{flex:none;min-height:0;padding:4px 0 0}
 .onb__photo-wrap{position:relative}
-.onb__photo--sm{width:auto;height:min(30vh,260px);border-radius:120px 120px 24px 24px}
+.onb__photo--sm{width:auto;height:clamp(150px,28dvh,260px);border-radius:120px 120px 24px 24px}
 .onb__sign{position:absolute;right:-26px;bottom:10px;font-size:30px;text-shadow:0 2px 10px rgba(255,255,255,.6)}
-.onb__text--welcome{margin-top:30px;gap:10px}
+.onb__text--welcome{margin-top:clamp(16px,3.5dvh,30px);gap:10px}
 .onb__text--welcome .h1{font-size:clamp(21px,6vw,27px)}
 .onb__text--welcome .muted{font-size:14.5px;line-height:1.5}
-.onb__gift{display:grid;gap:10px;width:100%}
+.onb__gift{display:grid;gap:clamp(6px,1.2dvh,10px);width:100%}
+.onb__gift .card{padding:clamp(8px,1.4dvh,12px)!important}
+.onb__gift .lesson-card__thumb{width:clamp(44px,7dvh,64px)!important;height:clamp(44px,7dvh,64px)!important}
+.onb__coin{width:min(56vw,30dvh,220px)}
+.onb .onb__text{gap:clamp(6px,1.4dvh,12px);margin-top:clamp(10px,2dvh,20px)}
+.onb .onb__text .h1{font-size:clamp(20px,min(6.4vw,4.2dvh),30px)}
+.onb .onb__text .muted{font-size:clamp(13px,2dvh,15px);line-height:1.45}
+.onb__dots{margin-bottom:clamp(8px,1.6dvh,18px)}
+@media (max-height:640px){.onb__gift .muted.small{display:none}.onb .bg-word{display:none}}
+.onb:not(:has(.dock)){padding-bottom:calc(var(--safe-bottom) + 20px)}
 .onb__text{text-align:center;display:grid;gap:12px;animation:screenIn .4s var(--ease)}
 .quiz-opt{display:block;width:100%;text-align:left;padding:16px 18px;border-radius:var(--r-md);background:var(--card);border:1.5px solid var(--line);font-weight:700;transition:all .2s var(--ease)}
 .quiz-opt:active{transform:scale(.98)}
@@ -485,3 +494,15 @@ h1,h2,h3,p{margin:0}
 
 /* Тёмная тема: все карточки — в том же градиенте, что первый экран сайта (мягче) */
 [data-theme="dark"] .card:not(.card--lime):not(.card--fuchsia):not(.card--ink){background:radial-gradient(120% 90% at 92% 0%,rgba(255,46,138,.16),transparent 60%),linear-gradient(165deg,#22121F 0%,#18111A 60%,#140F16 100%)}
+/* Ежедневный подарок — бесцветная карточка с розовым заголовком */
+.card.card--clear{background:transparent;box-shadow:none;border:1.5px solid var(--line-2)}
+.daily__title{color:var(--pink-btn)}
+[data-theme="dark"] .daily__title{color:var(--pink)}
+/* Главная: блок бесплатного мини-курса */
+.mini-course{padding:20px;border:1.5px solid rgba(255,46,138,.28);background:linear-gradient(160deg,rgba(255,46,138,.1),transparent 55%),var(--card)}
+.mini-course__list{display:grid;gap:8px;margin-top:14px}
+.mini-course__item{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;line-height:1.3}
+.mini-course__n{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:13px;font-weight:800;background:var(--bg-3);color:var(--text-2)}
+.mini-course__item.is-next .mini-course__n{background:var(--pink-btn);color:#fff}
+.mini-course__item.is-done .mini-course__n{background:var(--lime);color:#0E0B0F}
+.mini-course__item.is-locked{opacity:.45}

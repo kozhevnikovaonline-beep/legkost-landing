@@ -4,14 +4,13 @@ import { TASK_REWARDS, type TaskId } from "../../shared/economy.ts";
 import { lessonById, LESSONS } from "../content/lessons";
 import { guideById } from "../content/guides";
 import { Blocks, Checklist } from "../components/Blocks";
-import { Empty, Feather, Img, MainAction, SubBar } from "../components/ui";
+import { Empty, Feather, Img, SubBar } from "../components/ui";
 import { IconChevron, IconPlayFill } from "../components/Icons";
 import { appStore, useUserState } from "../store/appStore";
 import { toast } from "../store/toastStore";
 import { navigate } from "../lib/router";
 import { toVideoSource } from "../lib/video";
-import { config } from "../config";
-import { haptic, openLink } from "../telegram/sdk";
+import { haptic } from "../telegram/sdk";
 
 export function Lesson({ id }: { id: string }) {
   const s = useUserState();
@@ -76,7 +75,7 @@ export function Lesson({ id }: { id: string }) {
   const mainClick = !done ? complete : next ? () => navigate({ name: "lesson", id: next.id }, { replace: true }) : () => navigate({ name: "next" }, { replace: true });
 
   return (
-    <main className="screen screen--sub">
+    <main className="screen screen--sub" style={{ paddingBottom: "calc(var(--safe-bottom) + 40px)" }}>
       <SubBar title={`Урок ${lesson.number} из ${LESSONS.length}`} />
 
       <div className="lesson-hero">
@@ -133,11 +132,6 @@ export function Lesson({ id }: { id: string }) {
       <section className="section">
         <div className="eyebrow">Домашнее задание</div>
         <Checklist id={lesson.homework.id} items={lesson.homework.items} />
-        {lesson.id === "lesson-1" && (
-          <button className="btn btn-soft btn-block" style={{ marginTop: 10 }} onClick={() => openLink(`https://t.me/${config.botUsername}?start=plate`)}>
-            Отправить фото тарелки в бот
-          </button>
-        )}
       </section>
 
       {done && (
@@ -150,7 +144,10 @@ export function Lesson({ id }: { id: string }) {
         </div>
       )}
 
-      <MainAction text={mainText} onClick={() => void mainClick()} loading={busy} shine={!done} />
+      {/* Кнопка в конце урока, не плавающая */}
+      <button className="btn btn-primary btn-block" style={{ marginTop: 24 }} onClick={() => void mainClick()} disabled={busy}>
+        {busy ? "Сохраняем…" : mainText}
+      </button>
     </main>
   );
 }

@@ -74,7 +74,7 @@ export function Next() {
             <div className="grow">
               <b className="h3" style={{ display: "block" }}>Ваши лепестки = скидка</b>
               <p className="muted small" style={{ marginTop: 6, lineHeight: 1.55 }}>
-                У вас {fmt(s.game.balance)} лепестков. Обменяйте их на скидку до 30% на любой формат
+                У вас {fmt(s.game.balance)} лепестков. Обменяйте их на скидку до 20% на любой формат
                 {discountAvailable > 0 ? ` — например, до ${rub(discountAvailable)} на групповой формат.` : ". Потапайте — и скидка вырастет."}
               </p>
             </div>

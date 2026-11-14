@@ -85,7 +85,7 @@ describe("магазин", () => {
     expect(reduce(s, { type: "buyFeathers", itemId: "system" }, T0)).toEqual({ ok: false, error: "bad_request" });
   });
 
-  it("скидка лепестками ограничена 30% цены и сгорает после оплаты", () => {
+  it("скидка лепестками ограничена 20% цены и сгорает после оплаты", () => {
     let s = ok(reduce(rich(), { type: "discount", productId: "system", rub: 1000 }, T0));
     expect(finalPrice(s, "system", 5690)).toBe(4690);
     expect(reduce(s, { type: "discount", productId: "system", rub: 1000 }, T0)).toEqual({ ok: false, error: "discount_limit" });

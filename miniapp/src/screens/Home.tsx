@@ -1,9 +1,9 @@
 import { DAILY_REWARDS, dailyStatus } from "../../shared/economy.ts";
 import { BRAND } from "../content/brand";
-import { lessonById } from "../content/lessons";
+import { lessonById, LESSONS } from "../content/lessons";
 import { quizById } from "../content/quizzes";
 import { Feather, Img, Progress, TopBar } from "../components/ui";
-import { IconChevron } from "../components/Icons";
+import { IconChevron, IconLock } from "../components/Icons";
 import { appStore, useUserState } from "../store/appStore";
 import { claimableTasks, lessonsProgress } from "../store/selectors";
 import { fmt, greeting } from "../lib/format";
@@ -32,22 +32,36 @@ export function Home() {
 
       {/* Следующий урок / завершённый курс */}
       {nextLesson ? (
-        <button className="hero-card card--pressable" style={{ width: "100%", textAlign: "left", marginTop: 10 }} onClick={() => navigate({ name: "lesson", id: nextLesson.id })}>
-          <Img src={nextLesson.cover} alt="" className="hero-card__img" />
-          <span className="chip chip--dark" style={{ alignSelf: "flex-start", marginBottom: "auto" }}>
-            Бесплатно · урок {nextLesson.number} из 3
-          </span>
-          <div style={{ marginTop: 60 }}>
-            <h2 className="h2">{nextLesson.title}</h2>
-            <p style={{ opacity: 0.85, fontSize: 13.5, marginTop: 6 }}>{nextLesson.summary}</p>
-            <div className="row" style={{ marginTop: 14 }}>
-              <div className="grow">
-                <Progress value={lp.done / lp.total} />
-              </div>
-              <span className="btn btn-primary btn-sm">{lp.done === 0 ? "Начать" : "Продолжить"} →</span>
-            </div>
+        <div className="card mini-course" style={{ marginTop: 10 }}>
+          <div className="eyebrow">Бесплатный мини-курс</div>
+          <h2 className="h2">
+            3 урока <em>от Алёны</em>
+          </h2>
+          <p className="muted small" style={{ marginTop: 8, lineHeight: 1.5 }}>
+            Узнаете, почему вес стоит, соберёте сытную тарелку без подсчёта калорий и сделаете первую тренировку дома. За каждый урок — 300 лепестков.
+          </p>
+          <div className="mini-course__list">
+            {LESSONS.map((l) => {
+              const isDone = s.progress.lessonsCompleted.includes(l.id);
+              const isNext = l.id === nextLesson.id;
+              return (
+                <div key={l.id} className={`mini-course__item${isDone ? " is-done" : isNext ? " is-next" : " is-locked"}`}>
+                  <span className="mini-course__n">{isDone ? "✓" : isNext ? l.number : <IconLock width={14} />}</span>
+                  <span className="grow">{l.title}</span>
+                </div>
+              );
+            })}
           </div>
-        </button>
+          <div className="row" style={{ marginTop: 16 }}>
+            <div className="grow">
+              <Progress value={lp.done / lp.total} />
+              <div className="muted small" style={{ marginTop: 6 }}>Пройдено {lp.done} из {lp.total}</div>
+            </div>
+            <button className="btn btn-primary btn-sm" onClick={() => navigate({ name: "lesson", id: nextLesson.id })}>
+              {lp.done === 0 ? "Начать" : "Продолжить"} →
+            </button>
+          </div>
+        </div>
       ) : (
         <div className="card card--ink grain has-hint" style={{ marginTop: 10 }}>
           <Hint title="Мини-курс" text="Вы прошли все бесплатные уроки. Здесь — следующий шаг: онлайн-программа «ЛЁГКОСТЬ» на 31 день и бонус-эфир про гормоны." />
@@ -65,13 +79,13 @@ export function Home() {
         </div>
       )}
 
-      {/* Ежедневная награда: тёмная, пока есть что забрать; белая, когда получена */}
+      {/* Ежедневная награда: бесцветный фон, розовый заголовок */}
       <section className="section">
-        <div className={`card has-hint${daily.claimedToday ? "" : " card--ink grain"}`}>
-          <Hint title="Ежедневный подарок" text="Заходите каждый день и забирайте награду. Чем длиннее серия, тем больше: с 100 до 2 500 за 7-й день. Пропустили день — серия начнётся заново." />
+        <div className="card card--clear has-hint">
+          <Hint title="Ежедневный подарок" text="Заходите каждый день и забирайте награду. Чем длиннее серия, тем больше: с 100 до 400 за 7-й день. Пропустили день — серия начнётся заново." />
           <div className="row">
             <div className="grow">
-              <div className="h3">{daily.claimedToday ? "Награда получена ✓" : "Ежедневный подарок"}</div>
+              <div className="h3 daily__title">{daily.claimedToday ? "Награда получена ✓" : "Ежедневный подарок"}</div>
               <p className="muted small" style={{ marginTop: 4 }}>
                 {daily.claimedToday ? `Серия: ${daily.streak} дн. Возвращайтесь завтра!` : `День ${daily.nextStreak} подряд · +${fmt(daily.reward)} лепестков`}
               </p>

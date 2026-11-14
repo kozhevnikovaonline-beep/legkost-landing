@@ -20,7 +20,7 @@ export const ECONOMY = {
   /** Сколько лепестков = 1 ₽ скидки */
   feathersPerRub: 1,
   /** Максимальная доля цены, которую можно оплатить лепестками */
-  maxDiscountShare: 0.3,
+  maxDiscountShare: 0.2,
   /** Часовой пояс для смены суток (МСК) */
   tzOffsetMinutes: 180,
 } as const;
@@ -32,7 +32,7 @@ export const BOOST_BASE_COST: Record<BoostKind, number> = {
 };
 
 /** Награды за ежедневный вход: 1-й, 2-й … 7-й день подряд (дальше — как 7-й) */
-export const DAILY_REWARDS = [100, 250, 400, 700, 1000, 1500, 2500] as const;
+export const DAILY_REWARDS = [100, 150, 200, 250, 300, 350, 400] as const;
 
 /** Задания и награды. Тексты — в src/content/tasks.ts */
 export const TASK_REWARDS = {
@@ -240,7 +240,7 @@ export function buyWithFeathers(s: UserState, itemId: string, price: number): Re
 /** Максимальная скидка в ₽ на продукт с ценой priceRub */
 export const maxDiscountRub = (priceRub: number) => Math.floor(priceRub * ECONOMY.maxDiscountShare);
 
-/** Обменять лепестки на скидку (накопительно, до 30% цены) */
+/** Обменять лепестки на скидку (накопительно, до 20% цены) */
 export function applyDiscount(s: UserState, productId: string, priceRub: number, rub: number): Result<UserState> {
   const already = s.progress.coupons[productId] ?? 0;
   const amount = Math.floor(rub);

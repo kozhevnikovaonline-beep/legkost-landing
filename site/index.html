@@ -170,6 +170,7 @@ section>.container{position:relative;z-index:1}
 .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(198,255,74,.7);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(198,255,74,0)}100%{box-shadow:0 0 0 0 rgba(198,255,74,0)}}
 .hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(40px,11vw,92px);line-height:.98;letter-spacing:-.005em;margin:20px 0 20px}
+@media (min-width:1024px){.hero h1{font-size:clamp(56px,4.9vw,80px)}.hero h1 .hl{display:block;white-space:nowrap}}
 .hero h1 .pink{color:var(--pink);text-shadow:0 0 40px rgba(255,46,138,.45)}
 .hero h1 .under{position:relative;white-space:nowrap}
 .hero h1 .under svg{position:absolute;left:0;right:0;bottom:.02em;width:100%;height:.14em}
@@ -369,7 +370,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .field.invalid .err{display:block}
 fieldset{border:0;padding:0;margin:0 0 14px}
 legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
-.msgr{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.msgr{position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .msgr input{position:absolute;opacity:0}
 .msgr label{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 6px;border-radius:14px;border:2px solid #EADCE3;cursor:pointer;font-size:13px;font-weight:700;transition:.2s;text-align:center}
 .msgr label svg{width:24px;height:24px}
@@ -435,11 +436,12 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 
 /* ========== ≥ 768px ========== */
 @media (min-width:768px){
+  .quiz-wrap .h2,.lead-grid .h2{font-size:clamp(24px,3.2vw,40px)}
+  .lead-grid{max-width:760px;margin:0 auto}
   .container{padding:0 32px}
   section{padding:104px 0}
   .hero{padding:140px 0 80px}
   .hero-ctas{flex-direction:row;flex-wrap:wrap}
-  .cards-3{grid-template-columns:repeat(3,1fr)}
   .calc{grid-template-columns:1.2fr 1fr;padding:40px;align-items:center}
   .pillars{grid-template-columns:repeat(2,1fr)}
   .weeks{grid-template-columns:repeat(2,1fr)}
@@ -452,6 +454,7 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 }
 /* ========== ≥ 1024px: desktop nav ========== */
 @media (min-width:1024px){
+  .cards-3{grid-template-columns:repeat(3,1fr)}
   .nav{display:flex;gap:28px}
   .header-cta{display:inline-flex;--h:46px;padding:0 22px;font-size:14px}
   .burger,.mobile-menu{display:none}
@@ -460,6 +463,9 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 }
 /* ========== ≥ 1280px ========== */
 @media (min-width:1280px){
+  .lead-grid{max-width:none}
+  .pillar h3{font-size:17px}
+  .pillar-body{padding:22px}
   .regalia{grid-template-columns:repeat(4,1fr)}
   .hero-grid{grid-template-columns:1.15fr .85fr;gap:64px}
   .hero-visual{max-width:none}
@@ -475,7 +481,6 @@ legend{font-weight:700;font-size:14px;margin-bottom:8px;padding:0}
 @media (min-width:768px) and (max-width:1279px){
   .hero-grid{grid-template-columns:1.1fr .9fr}
   .author-grid{grid-template-columns:1fr 1fr}
-  .lead-grid{grid-template-columns:1fr 1.1fr}
 }
 /* ========== ≥ 1920px ========== */
 @media (min-width:1920px){
@@ -487,6 +492,10 @@ html{-webkit-tap-highlight-color:transparent;text-size-adjust:100%}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 .hero-grid>*,.lead-grid>*,.author-grid>*,.quiz-wrap>*,.calc>*,.footer-grid>*,.lesson>div{min-width:0}
 h1,h2,h3,.h2{overflow-wrap:break-word;hyphens:manual}
+h1,h2,h3,.h2,summary,.quote,.sticker,.gb-title{text-wrap:balance}
+p,li,.lead,.form-sub,.ans{text-wrap:pretty}
+.thanks h3{margin-bottom:12px}
+.thanks p{margin:0 auto 16px;max-width:420px}
 p,li,summary{overflow-wrap:break-word}
 .header{padding-top:env(safe-area-inset-top)}
 .mobile-menu{inset:calc(64px + env(safe-area-inset-top)) 0 0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:calc(32px + env(safe-area-inset-bottom))}
@@ -528,12 +537,11 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Перейти к содержимому</a>
+<a class="skip" href="#main">Перейти&nbsp;к&nbsp;содержимому</a>
 
 <!-- SVG sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.1 1.8 11.6c-1-.3-1-1 .2-1.5L20.5 3c.9-.3 1.6.2 1.4 1.3z"/></symbol>
-  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.2-.1-1-.4-2-1.2-.7-.7-1.2-1.5-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
   <symbol id="i-vk" viewBox="0 0 24 24"><path fill="currentColor" d="M12.8 18c-6 0-9.4-4.1-9.6-11h3c.1 5 2.3 7.2 4.1 7.6V7h2.8v4.3c1.7-.2 3.6-2.2 4.2-4.3h2.8c-.5 2.7-2.4 4.7-3.8 5.5 1.4.7 3.6 2.4 4.4 5.5h-3.1c-.7-2.1-2.3-3.7-4.5-3.9V18h-.3z"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/></symbol>
@@ -561,8 +569,8 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
 </header>
 <nav class="mobile-menu" id="mobileMenu" aria-label="Мобильное меню">
   <a href="#check">Узнать себя</a>
-  <a href="#system">Что такое система</a>
-  <a href="#program">Программа на 28 дней</a>
+  <a href="#system">Что&nbsp;такое система</a>
+  <a href="#program">Программа на&nbsp;28&nbsp;дней</a>
   <a href="#author">Об авторе</a>
   <a href="#reviews">Отзывы</a>
   <a href="#faq">Вопросы</a>
@@ -576,16 +584,16 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
-        <span class="badge reveal"><span class="dot" aria-hidden="true"></span>Онлайн-программа для женщин</span>
-        <h1 class="reveal d1">Почему вес <span class="pink under">стоит,<svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10C60 3 150 2 297 8" stroke="#C6FF4A" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span> даже если вы едите мало?</h1>
-        <p class="lead reveal d2">7 скрытых причин, из-за которых живот не уходит, тело отекает и тянет на сладкое. И система, которая убирает их за 28 дней — <strong style="color:#fff">в среднем −5–7 кг</strong> без срывов и откатов.</p>
+        <span class="badge reveal"><span class="dot" aria-hidden="true"></span>Онлайн-программа для&nbsp;женщин</span>
+        <h1 class="reveal d1"><span class="hl">Почему вес <span class="pink under">стоит,<svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10C60 3 150 2 297 8" stroke="#C6FF4A" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span></span> <span class="hl">даже если&nbsp;вы</span> <span class="hl">едите мало?</span></h1>
+        <p class="lead reveal d2">7 скрытых причин, из-за которых живот не&nbsp;уходит, тело отекает и&nbsp;тянет на&nbsp;сладкое. И система, которая убирает их за&nbsp;28&nbsp;дней&nbsp;— <strong style="color:#fff">в&nbsp;среднем −5–7&nbsp;кг</strong> без&nbsp;срывов и&nbsp;откатов.</p>
         <ul class="chips reveal d2" aria-label="Чего не будет">
-          <li>голодовок</li><li>запретов на вкусное</li><li>зала и 2 часов в день</li>
+          <li>голодовок</li><li>запретов на&nbsp;вкусное</li><li>зала и&nbsp;2 часов в&nbsp;день</li>
         </ul>
         <div class="hero-ctas reveal d3">
-          <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_hero">Смотреть 3 урока бесплатно</a>
+          <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_hero">Смотреть 3&nbsp;урока бесплатно</a>
         </div>
-        <p class="hero-note reveal d3">Доступ к урокам придёт в Telegram за 1 минуту</p>
+        <p class="hero-note reveal d3">Доступ к&nbsp;урокам придёт в&nbsp;Telegram за&nbsp;1&nbsp;минуту</p>
         <div class="trust reveal d3">
           <div class="avatars" aria-hidden="true">
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces&auto=format&q=60" width="40" height="40" alt="" loading="lazy">
@@ -593,12 +601,12 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
             <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=faces&auto=format&q=60" width="40" height="40" alt="" loading="lazy">
             <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&h=80&fit=crop&crop=faces&auto=format&q=60" width="40" height="40" alt="" loading="lazy">
           </div>
-          <p><span class="stars" aria-label="Рейтинг 4,9 из 5">★★★★★</span><br><strong>4,9</strong> — 860+ отзывов учениц</p>
+          <p><span class="stars" aria-label="Рейтинг 4,9 из 5">★★★★★</span><br><strong>4,9</strong>&nbsp;— 860+ отзывов учениц</p>
         </div>
       </div>
 
       <div class="hero-visual reveal d2">
-        <span class="hand hand-note" aria-hidden="true">это про меня!</span>
+        <span class="hand hand-note" aria-hidden="true">это&nbsp;про&nbsp;меня!</span>
         <div class="ring" aria-hidden="true"></div>
         <div class="hero-photo">
           <!-- ЗАМЕНИТЬ: фото на главном экране (сток Unsplash) -->
@@ -607,14 +615,14 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
                sizes="(min-width:1280px) 520px, (min-width:768px) 44vw, 86vw"
                width="720" height="900" alt="Девушка в спортивном топе на тренировке — система «ЛЁГКОСТЬ»" fetchpriority="high">
         </div>
-        <div class="sticker sticker-1"><b>−6,8 кг</b>в среднем<br>за 28 дней</div>
-        <div class="sticker sticker-2"><b>20 мин</b>тренировка<br>дома</div>
+        <div class="sticker sticker-1"><b>−6,8&nbsp;кг</b>в&nbsp;среднем<br>за&nbsp;28&nbsp;дней</div>
+        <div class="sticker sticker-2"><b>20&nbsp;мин</b>тренировка<br>дома</div>
       </div>
     </div>
 
     <div class="hero-stats">
       <div class="stat reveal"><b><span data-count="2400">0</span>+</b><small>учениц прошли систему</small></div>
-      <div class="stat reveal d1"><b>−<span data-count="6.8" data-dec="1">0</span> кг</b><small>средний результат за 28 дней</small></div>
+      <div class="stat reveal d1"><b>−<span data-count="6.8" data-dec="1">0</span> кг</b><small>средний результат за&nbsp;28&nbsp;дней</small></div>
       <div class="stat reveal d2"><b><span data-count="87">0</span>%</b><small>удержали вес через 6 месяцев</small></div>
     </div>
   </div>
@@ -623,36 +631,36 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
 <!-- ============ 2. MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Без голодовок</span><span>Без запретов</span><span>20 минут в день</span><span>Без зала</span><span>Без подсчёта калорий</span><span>Личный куратор</span>
-    <span>Без голодовок</span><span>Без запретов</span><span>20 минут в день</span><span>Без зала</span><span>Без подсчёта калорий</span><span>Личный куратор</span>
+    <span>Без голодовок</span><span>Без запретов</span><span>20&nbsp;минут в&nbsp;день</span><span>Без зала</span><span>Без подсчёта&nbsp;калорий</span><span>Личный куратор</span>
+    <span>Без голодовок</span><span>Без запретов</span><span>20&nbsp;минут в&nbsp;день</span><span>Без зала</span><span>Без подсчёта&nbsp;калорий</span><span>Личный куратор</span>
   </div>
 </div>
 
 <!-- ============ 3. QUIZ ============ -->
 <section class="powder" id="check">
-  <span class="bg-word" style="right:-4%;top:40px" aria-hidden="true">Это я?</span>
+  <span class="bg-word" style="right:-4%;top:40px" aria-hidden="true">Это&nbsp;я?</span>
   <div class="container">
     <div class="quiz-wrap">
       <div>
         <div class="sec-head reveal">
-          <span class="eyebrow">Тест за 30 секунд</span>
-          <h2 class="h2">Вам нужна <em>система,</em> а не очередная диета?</h2>
-          <p class="lead">Отметьте пункты, в которых узнали себя.</p>
+          <span class="eyebrow">Тест за&nbsp;30 секунд</span>
+          <h2 class="h2">Вам нужна <em>система,</em> а&nbsp;не&nbsp;очередная диета?</h2>
+          <p class="lead">Отметьте пункты, в&nbsp;которых узнали себя.</p>
         </div>
         <ul class="quiz" id="quiz">
-          <li class="q-item reveal"><input type="checkbox" id="q1"><label for="q1"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">01</span>Едите вроде немного, а вес всё равно стоит<small>Следите за питанием, но весы не двигаются неделями</small></span></label></li>
-          <li class="q-item reveal"><input type="checkbox" id="q2"><label for="q2"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">02</span>Живот и бока уходят последними<small>Тело кажется рыхлым, даже когда вес снижается</small></span></label></li>
-          <li class="q-item reveal"><input type="checkbox" id="q3"><label for="q3"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">03</span>Постоянно тянет на сладкое, особенно вечером<small>Днём держитесь, а после 20:00 «срываетесь»</small></span></label></li>
-          <li class="q-item reveal"><input type="checkbox" id="q4"><label for="q4"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">04</span>Худели раньше, но вес возвращался<small>И часто — с «процентами»</small></span></label></li>
-          <li class="q-item reveal"><input type="checkbox" id="q5"><label for="q5"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">05</span>Не хватает энергии<small>Просыпаетесь уставшей, к вечеру нет сил ни на что</small></span></label></li>
+          <li class="q-item reveal"><input type="checkbox" id="q1"><label for="q1"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">01</span>Едите вроде немного, а&nbsp;вес всё равно стоит<small>Следите за&nbsp;питанием, но&nbsp;весы не&nbsp;двигаются неделями</small></span></label></li>
+          <li class="q-item reveal"><input type="checkbox" id="q2"><label for="q2"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">02</span>Живот и&nbsp;бока уходят последними<small>Тело кажется рыхлым, даже когда вес снижается</small></span></label></li>
+          <li class="q-item reveal"><input type="checkbox" id="q3"><label for="q3"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">03</span>Постоянно тянет на&nbsp;сладкое, особенно вечером<small>Днём держитесь, а&nbsp;после 20:00 «срываетесь»</small></span></label></li>
+          <li class="q-item reveal"><input type="checkbox" id="q4"><label for="q4"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">04</span>Худели раньше, но&nbsp;вес возвращался<small>И часто&nbsp;— с&nbsp;«процентами»</small></span></label></li>
+          <li class="q-item reveal"><input type="checkbox" id="q5"><label for="q5"><span class="q-box"><svg><use href="#i-check"/></svg></span><span class="q-text"><span class="q-num">05</span>Не хватает энергии<small>Просыпаетесь уставшей, к&nbsp;вечеру&nbsp;нет сил ни&nbsp;на&nbsp;что</small></span></label></li>
         </ul>
       </div>
       <div class="quiz-result reveal" aria-live="polite">
-        <div class="quiz-meta"><span>Совпадений</span><span><span id="qCount">0</span> из 5</span></div>
+        <div class="quiz-meta"><span>Совпадений</span><span><span id="qCount">0</span> из&nbsp;5</span></div>
         <div class="meter" role="progressbar" aria-label="Совпадения" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="qMeter"><i></i></div>
         <h3 id="qTitle">Отметьте пункты слева</h3>
-        <p id="qText">Если узнали себя хотя бы в 2–3 пунктах — дело не в силе воли. На бесплатном уроке покажу, в чём.</p>
-        <a href="#guide" class="btn btn-primary btn-block btn-arrow" data-goal="cta_quiz">Найти причину на уроке</a>
+        <p id="qText">Если узнали себя хотя бы в&nbsp;2–3 пунктах&nbsp;— дело не&nbsp;в&nbsp;силе воли. На бесплатном уроке покажу, в&nbsp;чём.</p>
+        <a href="#guide" class="btn btn-primary btn-block btn-arrow" data-goal="cta_quiz">Найти причину</a>
       </div>
     </div>
   </div>
@@ -664,38 +672,38 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow">Честно</span>
-      <h2 class="h2">Вы не сломаны. <em>Сломаны диеты.</em></h2>
-      <p class="lead">Жёсткие ограничения работают 2–3 недели. Потом организм включает защиту — и вес возвращается. Вот три ловушки, в которые попадают 9 из 10 женщин.</p>
+      <h2 class="h2">Вы не&nbsp;сломаны. <em>Сломаны диеты.</em></h2>
+      <p class="lead">Жёсткие ограничения работают 2–3 недели. Потом организм включает защиту&nbsp;— и&nbsp;вес возвращается. Вот три&nbsp;ловушки, в&nbsp;которые попадают 9 из&nbsp;10 женщин.</p>
     </div>
     <div class="cards-3">
-      <article class="reason reveal"><span class="num">01</span><h3>Слишком мало еды → обмен замедляется</h3><p>Тело думает, что наступил голод, и начинает экономить: копит воду, держит жир на животе, отнимает энергию.</p></article>
-      <article class="reason reveal d1"><span class="num">02</span><h3>Запреты → срывы на сладкое</h3><p>Чем жёстче «нельзя», тем сильнее тяга. Вечерний срыв — это не слабость, а реакция на недоедание днём.</p></article>
-      <article class="reason reveal d2"><span class="num">03</span><h3>Еда без сна и восстановления</h3><p>Недосып и стресс повышают кортизол — и никакая диета не уберёт отёки и живот, пока это не исправлено.</p></article>
+      <article class="reason reveal"><span class="num">01</span><h3>Слишком мало еды → обмен замедляется</h3><p>Тело думает, что&nbsp;наступил голод, и&nbsp;начинает экономить: копит воду, держит жир на&nbsp;животе, отнимает энергию.</p></article>
+      <article class="reason reveal d1"><span class="num">02</span><h3>Запреты → срывы на&nbsp;сладкое</h3><p>Чем жёстче «нельзя», тем сильнее тяга. Вечерний срыв&nbsp;— это&nbsp;не&nbsp;слабость, а&nbsp;реакция на&nbsp;недоедание днём.</p></article>
+      <article class="reason reveal d2"><span class="num">03</span><h3>Еда без&nbsp;сна и&nbsp;восстановления</h3><p>Недосып и&nbsp;стресс повышают кортизол&nbsp;— и&nbsp;никакая диета&nbsp;не&nbsp;уберёт отёки и&nbsp;живот, пока это&nbsp;не&nbsp;исправлено.</p></article>
     </div>
 
     <div class="calc reveal" id="calc">
       <div>
-        <h3>Сколько вам уже стоили диеты?</h3>
-        <p>Подвиньте ползунки — и посмотрите честно.</p>
+        <h3>Сколько&nbsp;вам уже&nbsp;стоили диеты?</h3>
+        <p>Подвиньте ползунки&nbsp;— и&nbsp;посмотрите честно.</p>
         <div class="range">
-          <label for="cTimes">Сколько раз начинали «с понедельника» <output id="oTimes">6 раз</output></label>
+          <label for="cTimes">Сколько&nbsp;раз начинали «с понедельника» <output id="oTimes">6&nbsp;раз</output></label>
           <input type="range" id="cTimes" min="1" max="30" value="6">
         </div>
         <div class="range">
-          <label for="cMoney">Тратили на одну попытку (марафон, БАДы, продукты) <output id="oMoney">5 000 ₽</output></label>
+          <label for="cMoney">Тратили&nbsp;на&nbsp;одну попытку (марафон, БАДы, продукты) <output id="oMoney">5 000&nbsp;₽</output></label>
           <input type="range" id="cMoney" min="1000" max="30000" step="500" value="5000">
         </div>
         <div class="range">
-          <label for="cWeeks">Сколько недель длилась одна попытка <output id="oWeeks">3 нед.</output></label>
+          <label for="cWeeks">Сколько&nbsp;недель длилась одна попытка <output id="oWeeks">3&nbsp;нед.</output></label>
           <input type="range" id="cWeeks" min="1" max="12" value="3">
         </div>
       </div>
       <div class="calc-out" aria-live="polite">
-        <small>Вы уже отдали диетам</small>
-        <div class="calc-big" id="cTotal">30 000 ₽</div>
-        <div class="calc-sub" id="cTime">и 18 недель жизни на ограничениях</div>
-        <p>А вес всё равно вернулся. Хватит платить за то, что не работает.</p>
-        <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_calc">Начать с бесплатных уроков</a>
+        <small>Вы уже&nbsp;отдали диетам</small>
+        <div class="calc-big" id="cTotal">30 000&nbsp;₽</div>
+        <div class="calc-sub" id="cTime">и&nbsp;18&nbsp;недель жизни на&nbsp;ограничениях</div>
+        <p>А вес всё равно вернулся. Хватит платить за&nbsp;то, что&nbsp;не&nbsp;работает.</p>
+        <a href="#guide" class="btn btn-primary btn-block" data-goal="cta_calc">Начать с&nbsp;бесплатных уроков</a>
       </div>
     </div>
   </div>
@@ -706,8 +714,8 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="sec-head center reveal">
       <span class="eyebrow">Метод «3 опоры»</span>
-      <h2 class="h2">Что такое <em>«ЛЁГКОСТЬ»</em></h2>
-      <p class="lead">Питание, движение и образ жизни работают вместе. Уберите одну опору — и вес встанет. Поэтому мы работаем со всеми тремя сразу.</p>
+      <h2 class="h2">Что&nbsp;такое <em>«ЛЁГКОСТЬ»</em></h2>
+      <p class="lead">Питание, движение и&nbsp;образ жизни работают вместе. Уберите одну опору&nbsp;— и&nbsp;вес встанет. Поэтому мы работаем со&nbsp;всеми тремя сразу.</p>
     </div>
     <div class="pillars">
       <article class="pillar reveal">
@@ -716,9 +724,9 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
           <span class="pillar-tag">ОПОРА 1</span>
         </div>
         <div class="pillar-body">
-          <h3>Питание по тарелке</h3>
-          <p>Без весов и подсчёта калорий. Едите обычную семейную еду.</p>
-          <ul class="ticks"><li>Сладкое — можно, по правилу «после еды»</li><li>100+ рецептов до 20 минут</li><li>Меню на неделю + список покупок</li></ul>
+          <h3>Питание по&nbsp;тарелке</h3>
+          <p>Без весов и&nbsp;подсчёта&nbsp;калорий. Едите обычную семейную еду.</p>
+          <ul class="ticks"><li>Сладкое&nbsp;— можно, по&nbsp;правилу «после еды»</li><li>100+ рецептов до&nbsp;20&nbsp;минут</li><li>Меню на&nbsp;неделю + список покупок</li></ul>
         </div>
       </article>
       <article class="pillar reveal d1">
@@ -727,9 +735,9 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
           <span class="pillar-tag">ОПОРА 2</span>
         </div>
         <div class="pillar-body">
-          <h3>20 минут движения</h3>
-          <p>Дома, без зала и прыжков. Бережно к коленям и спине.</p>
-          <ul class="ticks"><li>Блок «плоский живот» и осанка</li><li>Лимфодренаж против отёков</li><li>3 уровня: от нуля до продвинутого</li></ul>
+          <h3>20&nbsp;минут движения</h3>
+          <p>Дома, без&nbsp;зала и&nbsp;прыжков. Бережно к&nbsp;коленям и&nbsp;спине.</p>
+          <ul class="ticks"><li>Блок «плоский живот» и&nbsp;осанка</li><li>Лимфодренаж против отёков</li><li>3 уровня: от&nbsp;нуля до&nbsp;продвинутого</li></ul>
         </div>
       </article>
       <article class="pillar reveal d2">
@@ -739,18 +747,18 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
         </div>
         <div class="pillar-body">
           <h3>Сон, расслабление, гормоны</h3>
-          <p>То, о чём молчат диеты, — и почему вес стоит.</p>
-          <ul class="ticks"><li>Как убрать вечернюю тягу к сладкому</li><li>Вода, сон и цикл — без мифов</li><li>Отдельный модуль для 40+</li></ul>
+          <p>То, о&nbsp;чём молчат диеты,&nbsp;— и&nbsp;почему вес стоит.</p>
+          <ul class="ticks"><li>Как убрать вечернюю тягу к&nbsp;сладкому</li><li>Вода, сон и&nbsp;цикл&nbsp;— без&nbsp;мифов</li><li>Отдельный модуль для&nbsp;40+</li></ul>
         </div>
       </article>
       <article class="pillar pillar-dark reveal d3">
         <div>
-          <span class="eyebrow">+ То, что держит</span>
-          <h3>Личный куратор в Telegram</h3>
-          <p>Каждый день проверяет дневник питания и отвечает на вопросы. Не дадим «слиться» на 3-й день.</p>
+          <span class="eyebrow">+ То, что&nbsp;держит</span>
+          <h3>Личный куратор в&nbsp;Telegram</h3>
+          <p>Каждый день проверяет дневник питания и&nbsp;отвечает на&nbsp;вопросы. Не дадим «слиться» на&nbsp;3-й день.</p>
         </div>
         <div class="chat-bubbles" aria-hidden="true">
-          <div class="bubble">Ирина, отличный ужин! Добавь белка в перекус — и вечером не потянет на сладкое 💗<small>Куратор Мария · 19:42</small></div>
+          <div class="bubble">Ирина, отличный ужин! Добавь белка в&nbsp;перекус&nbsp;— и&nbsp;вечером не&nbsp;потянет на&nbsp;сладкое 💗<small>Куратор Мария · 19:42</small></div>
           <div class="bubble me">Спасибо! Сегодня −400 г 🙌<small>19:45</small></div>
         </div>
       </article>
@@ -760,18 +768,18 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
 
 <!-- ============ 6. PROGRAM ============ -->
 <section class="dark-2 grain" id="program">
-  <span class="bg-word" style="right:-3%;top:30px" aria-hidden="true">28 дней</span>
+  <span class="bg-word" style="right:-3%;top:30px" aria-hidden="true">28&nbsp;дней</span>
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow">Программа</span>
-      <h2 class="h2">Что будет с вами <em>за 28 дней</em></h2>
-      <p class="lead">Каждая неделя — маленький шаг. Без стресса для тела и психики.</p>
+      <h2 class="h2">Что&nbsp;будет с&nbsp;вами <em>за&nbsp;28&nbsp;дней</em></h2>
+      <p class="lead">Каждая неделя&nbsp;— маленький шаг. Без стресса для&nbsp;тела и&nbsp;психики.</p>
     </div>
     <div class="weeks">
-      <article class="week reveal"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">01</span></div><h3>Перезагрузка</h3><p>Разбираем вашу тарелку, налаживаем воду и сон. Уходят отёки — первые результаты на весах.</p><span class="week-result">✓ −1,5–2 кг, лёгкость утром</span></article>
-      <article class="week reveal d1"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">02</span></div><h3>Без срывов</h3><p>Убираем вечернюю тягу к сладкому. Учимся есть в гостях и кафе без чувства вины.</p><span class="week-result">✓ Сладкое больше не управляет</span></article>
-      <article class="week reveal d2"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">03</span></div><h3>Тонус</h3><p>Добавляем силовые на живот и ягодицы. Тело становится плотнее, осанка — ровнее.</p><span class="week-result">✓ −3–5 см в талии</span></article>
-      <article class="week reveal d3"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">04</span></div><h3>Новая я</h3><p>Закрепляем привычки и составляем ваш личный план на 3 месяца, чтобы вес не вернулся.</p><span class="week-result">✓ Система, которая остаётся</span></article>
+      <article class="week reveal"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">01</span></div><h3>Перезагрузка</h3><p>Разбираем вашу&nbsp;тарелку, налаживаем воду и&nbsp;сон. Уходят отёки&nbsp;— первые результаты на&nbsp;весах.</p><span class="week-result">✓ −1,5–2&nbsp;кг, лёгкость утром</span></article>
+      <article class="week reveal d1"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">02</span></div><h3>Без срывов</h3><p>Убираем вечернюю тягу к&nbsp;сладкому. Учимся есть в&nbsp;гостях и&nbsp;кафе без&nbsp;чувства вины.</p><span class="week-result">✓ Сладкое больше не&nbsp;управляет</span></article>
+      <article class="week reveal d2"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">03</span></div><h3>Тонус</h3><p>Добавляем силовые на&nbsp;живот и&nbsp;ягодицы. Тело становится плотнее, осанка&nbsp;— ровнее.</p><span class="week-result">✓ −3–5&nbsp;см в&nbsp;талии</span></article>
+      <article class="week reveal d3"><div class="week-top"><span class="week-label">Неделя</span><span class="week-big">04</span></div><h3>Новая я</h3><p>Закрепляем привычки и&nbsp;составляем ваш личный план на&nbsp;3 месяца, чтобы вес не&nbsp;вернулся.</p><span class="week-result">✓ Система, которая остаётся</span></article>
     </div>
   </div>
 </section>
@@ -794,14 +802,14 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
         <span class="eyebrow">Автор системы</span>
         <h2 class="h2">Алёна <em>Ветрова</em></h2>
         <p class="author-role">Фитнес-тренер, нутрициолог, мама двоих детей</p>
-        <p>После вторых родов я весила 78 кг и перепробовала всё: кето, интервальное голодание, «не есть после шести», марафоны. Вес уходил — и возвращался с плюсом. Я ненавидела зеркало и сорвалась на сладкое, наверное, тысячу раз.</p>
-        <p>Всё изменилось, когда я перестала «сидеть на диете» и выстроила систему: нормальная еда, короткие тренировки, сон и спокойная голова. Минус 18 кг — и они не вернулись уже 7 лет.</p>
-        <blockquote class="quote">«Я создала систему, которую сама хотела бы иметь много лет назад. Без голодовок, без запретов на всё вкусное и без тренировок по 2 часа в день».</blockquote>
+        <p>После вторых родов я весила 78&nbsp;кг и&nbsp;перепробовала всё: кето, интервальное голодание, «не есть после шести», марафоны. Вес уходил&nbsp;— и&nbsp;возвращался с&nbsp;плюсом. Я ненавидела зеркало и&nbsp;сорвалась на&nbsp;сладкое, наверное, тысячу&nbsp;раз.</p>
+        <p>Всё изменилось, когда я перестала «сидеть на&nbsp;диете» и&nbsp;выстроила систему: нормальная еда, короткие тренировки, сон и&nbsp;спокойная голова. Минус&nbsp;18&nbsp;кг&nbsp;— и&nbsp;они не&nbsp;вернулись уже&nbsp;7&nbsp;лет.</p>
+        <blockquote class="quote">«Я создала систему, которую сама хотела бы иметь много лет назад. Без голодовок, без&nbsp;запретов на&nbsp;всё вкусное и&nbsp;без&nbsp;тренировок по&nbsp;2 часа в&nbsp;день».</blockquote>
         <ul class="regalia">
-          <li><b>9 лет</b>в фитнесе и нутрициологии</li>
+          <li><b>9&nbsp;лет</b>в&nbsp;фитнесе и&nbsp;нутрициологии</li>
           <li><b>2 400+</b>учениц прошли систему</li>
-          <li><b>−18 кг</b>мой личный результат</li>
-          <li><b>5</b>дипломов и сертификатов</li>
+          <li><b>−18&nbsp;кг</b>мой личный результат</li>
+          <li><b>5</b>дипломов и&nbsp;сертификатов</li>
         </ul>
       </div>
     </div>
@@ -813,52 +821,52 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="sec-head center reveal">
       <span class="eyebrow">Отзывы</span>
-      <h2 class="h2">Они тоже начинали <em>«с&nbsp;понедельника»</em></h2>
-      <p class="lead">Реальные истории учениц — без фотошопа и сушки к соревнованиям.</p>
+      <h2 class="h2">Они тоже начинали <em>«с понедельника»</em></h2>
+      <p class="lead">Реальные истории учениц&nbsp;— без&nbsp;фотошопа и&nbsp;сушки к&nbsp;соревнованиям.</p>
     </div>
 
     <!-- ЗАМЕНИТЬ: все отзывы, имена и фото — на реальные (с письменного согласия учениц) -->
     <div class="stories reveal" aria-label="Результаты учениц">
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Ирина"></span>Ирина<span>−8 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Ольга"></span>Ольга<span>−6 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Наталья"></span>Наталья<span>−11 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Дарья"></span>Дарья<span>−5 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Екатерина"></span>Екатерина<span>−7 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Светлана"></span>Светлана<span>−9 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Анна"></span>Анна<span>−6 кг</span></div>
-      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Марина"></span>Марина<span>−4 кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Ирина"></span>Ирина<span>−8&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Ольга"></span>Ольга<span>−6&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Наталья"></span>Наталья<span>−11&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Дарья"></span>Дарья<span>−5&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Екатерина"></span>Екатерина<span>−7&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Светлана"></span>Светлана<span>−9&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Анна"></span>Анна<span>−6&nbsp;кг</span></div>
+      <div class="story"><span class="review-ava"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="76" height="76" loading="lazy" alt="Марина"></span>Марина<span>−4&nbsp;кг</span></div>
     </div>
 
     <div class="reviews" id="reviewsTrack" tabindex="0" aria-label="Отзывы учениц, листайте горизонтально">
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Ирины"></span><div class="review-name">Ирина, 34<small>Казань · 2 детей</small></div><div class="review-res">−8 кг<small>за 6 недель</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Ирины"></span><div class="review-name">Ирина, 34<small>Казань · 2 детей</small></div><div class="review-res">−8&nbsp;кг<small>за&nbsp;6&nbsp;недель</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>После второго декрета не могла влезть ни в одни джинсы. <strong>Самое удивительное — я ни разу не голодала.</strong> Ем с мужем и детьми одно и то же, просто по-другому собираю тарелку. Живот ушёл первым, хотя всегда уходил последним!</p>
+        <p>После второго декрета&nbsp;не&nbsp;могла влезть ни&nbsp;в&nbsp;одни джинсы. <strong>Самое удивительное&nbsp;— я ни&nbsp;разу не&nbsp;голодала.</strong> Ем с&nbsp;мужем и&nbsp;детьми одно и&nbsp;то&nbsp;же, просто&nbsp;по-другому собираю тарелку. Живот ушёл первым, хотя всегда уходил последним!</p>
       </article>
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Натальи"></span><div class="review-name">Наталья, 48<small>Екатеринбург · бухгалтер</small></div><div class="review-res">−11 кг<small>за 3 месяца</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Натальи"></span><div class="review-name">Наталья, 48<small>Екатеринбург · бухгалтер</small></div><div class="review-res">−11&nbsp;кг<small>за&nbsp;3 месяца</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>Думала, после 45 уже всё — гормоны, возраст. Врач сказал «просто меньше ешьте». <strong>А я ела мало, и вес стоял.</strong> Оказалось, наоборот, надо было есть больше белка и нормально спать. Ушли отёки, перестали болеть колени.</p>
+        <p>Думала, после 45 уже&nbsp;всё&nbsp;— гормоны, возраст. Врач сказал «просто&nbsp;меньше ешьте». <strong>А я ела мало, и&nbsp;вес стоял.</strong> Оказалось, наоборот, надо было есть больше белка и&nbsp;нормально&nbsp;спать. Ушли отёки, перестали болеть колени.</p>
       </article>
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Ольги"></span><div class="review-name">Ольга, 29<small>Москва · маркетолог</small></div><div class="review-res">−6 кг<small>за 28 дней</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Ольги"></span><div class="review-name">Ольга, 29<small>Москва · маркетолог</small></div><div class="review-res">−6&nbsp;кг<small>за&nbsp;28&nbsp;дней</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>Мой вечный враг — сладкое в 22:00. <strong>На второй неделе тяга просто… пропала.</strong> Не силой воли, а потому что я наконец нормально ела днём. Тренировки по 20 минут делаю утром, пока все спят.</p>
+        <p>Мой вечный враг&nbsp;— сладкое в&nbsp;22:00. <strong>На второй неделе тяга просто… пропала.</strong> Не силой воли, а&nbsp;потому что&nbsp;я наконец нормально&nbsp;ела днём. Тренировки по&nbsp;20&nbsp;минут делаю утром, пока все спят.</p>
       </article>
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Светланы"></span><div class="review-name">Светлана, 41<small>Новосибирск · учитель</small></div><div class="review-res">−9 кг<small>за 2 месяца</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Светланы"></span><div class="review-name">Светлана, 41<small>Новосибирск · учитель</small></div><div class="review-res">−9&nbsp;кг<small>за&nbsp;2 месяца</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>Худела раз десять, и каждый раз возвращалось. <strong>Прошло полгода после курса — вес держится.</strong> Куратор Мария — отдельная любовь, она вытаскивала меня, когда я хотела всё бросить.</p>
+        <p>Худела раз десять, и&nbsp;каждый раз возвращалось. <strong>Прошло полгода после курса&nbsp;— вес держится.</strong> Куратор Мария&nbsp;— отдельная любовь, она вытаскивала меня, когда я хотела всё бросить.</p>
       </article>
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Екатерины"></span><div class="review-name">Екатерина, 37<small>Краснодар · предприниматель</small></div><div class="review-res">−7 кг<small>за 5 недель</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Екатерины"></span><div class="review-name">Екатерина, 37<small>Краснодар · предприниматель</small></div><div class="review-res">−7&nbsp;кг<small>за&nbsp;5&nbsp;недель</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>Работаю по 10 часов, времени ноль. <strong>Думала, не потяну, а это оказалось проще всех диет.</strong> Появилась энергия: раньше к обеду засыпала, теперь ещё и на прогулку вечером выхожу.</p>
+        <p>Работаю по&nbsp;10 часов, времени ноль. <strong>Думала, не&nbsp;потяну, а&nbsp;это&nbsp;оказалось проще всех диет.</strong> Появилась энергия: раньше к&nbsp;обеду засыпала, теперь ещё и&nbsp;на&nbsp;прогулку вечером выхожу.</p>
       </article>
       <article class="review">
-        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Дарьи"></span><div class="review-name">Дарья, 26<small>Санкт-Петербург · на ГВ</small></div><div class="review-res">−5 кг<small>за 28 дней</small></div></div>
+        <div class="review-head"><span class="review-ava"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop&crop=faces&auto=format&q=60" width="60" height="60" loading="lazy" alt="Фото Дарьи"></span><div class="review-name">Дарья, 26<small>Санкт-Петербург · на&nbsp;ГВ</small></div><div class="review-res">−5&nbsp;кг<small>за&nbsp;28&nbsp;дней</small></div></div>
         <span class="stars" aria-label="5 из 5">★★★★★</span>
-        <p>Кормлю грудью и боялась, что пропадёт молоко. <strong>Куратор подобрала питание под ГВ</strong> — всё в порядке, а я вернулась в добеременные платья. Тренировки делаю с малышом рядом на коврике.</p>
+        <p>Кормлю грудью и&nbsp;боялась, что&nbsp;пропадёт молоко. <strong>Куратор подобрала питание под&nbsp;ГВ</strong>&nbsp;— всё в&nbsp;порядке, а&nbsp;я вернулась в&nbsp;добеременные платья. Тренировки делаю с&nbsp;малышом рядом на&nbsp;коврике.</p>
       </article>
     </div>
     <div class="reviews-nav">
@@ -876,10 +884,10 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
       <h2 class="h2">Как проходит <em>обучение</em></h2>
     </div>
     <ol class="steps">
-      <li class="step reveal"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M10 18h4"/></svg></div><h3>Уроки в удобной платформе</h3><p>Короткие видео по 10–15 минут. Смотрите с телефона в любое время.</p></li>
-      <li class="step reveal d1"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12z"/></svg></div><h3>Куратор каждый день</h3><p>Проверка дневника питания и ответы на вопросы в Telegram.</p></li>
-      <li class="step reveal d2"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></div><h3>Чат поддержки без стыда</h3><p>Только девушки, без «скинь фото в купальнике». Отчёты — по желанию.</p></li>
-      <li class="step reveal d3"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Доступ 6 месяцев</h3><p>Проходите в своём темпе и возвращайтесь к урокам, когда нужно.</p></li>
+      <li class="step reveal"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M10 18h4"/></svg></div><h3>Уроки в&nbsp;удобной платформе</h3><p>Короткие видео по&nbsp;10–15&nbsp;минут. Смотрите с&nbsp;телефона в&nbsp;любое время.</p></li>
+      <li class="step reveal d1"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12z"/></svg></div><h3>Куратор каждый день</h3><p>Проверка дневника питания и&nbsp;ответы на&nbsp;вопросы в&nbsp;Telegram.</p></li>
+      <li class="step reveal d2"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></div><h3>Чат поддержки без&nbsp;стыда</h3><p>Только&nbsp;девушки, без&nbsp;«скинь фото&nbsp;в&nbsp;купальнике». Отчёты&nbsp;— по&nbsp;желанию.</p></li>
+      <li class="step reveal d3"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Доступ 6 месяцев</h3><p>Проходите в&nbsp;своём темпе и&nbsp;возвращайтесь к&nbsp;урокам, когда нужно.</p></li>
     </ol>
   </div>
 </section>
@@ -889,31 +897,31 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="lead-grid">
       <div class="reveal">
-        <span class="eyebrow">Бесплатно · 3 видеоурока</span>
-        <h2 class="h2" style="margin-bottom:12px">Начните худеть <em>уже сегодня</em> — с&nbsp;3&nbsp;бесплатных уроков</h2>
-        <p class="lead" style="margin-bottom:28px">Мини-курс от Алёны Ветровой: за 3 вечера вы поймёте, почему вес стоит, соберёте сытную тарелку и сделаете первую тренировку дома.</p>
+        <span class="eyebrow">Бесплатно&nbsp;· 3 видеоурока</span>
+        <h2 class="h2" style="margin-bottom:12px">Начните худеть <em>уже сегодня</em>&nbsp;— с&nbsp;3 бесплатных уроков</h2>
+        <p class="lead" style="margin-bottom:28px">Мини-курс&nbsp;от&nbsp;Алёны Ветровой: за&nbsp;3 вечера&nbsp;вы поймёте, почему вес стоит, соберёте сытную тарелку и&nbsp;сделаете первую тренировку дома.</p>
         <ol class="lessons">
           <li class="lesson">
             <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
-            <div><span class="lesson-num">Урок 1 · 18 мин</span><h3>Почему вес стоит: 7 скрытых причин</h3><p>Проверите себя по чек-листу и найдёте свою причину — отёки, недоедание, сон или гормоны.</p></div>
+            <div><span class="lesson-num">Урок 1 · 18&nbsp;мин</span><h3>Почему вес стоит: 7 скрытых причин</h3><p>Проверите себя по&nbsp;чек-листу&nbsp;и&nbsp;найдёте свою причину&nbsp;— отёки, недоедание, сон или&nbsp;гормоны.</p></div>
           </li>
           <li class="lesson">
             <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
-            <div><span class="lesson-num">Урок 2 · 15 мин</span><h3>Тарелка без голода + меню на 3 дня</h3><p>Как есть обычную еду и худеть. Правило «сладкое после еды», чтобы не срываться вечером.</p></div>
+            <div><span class="lesson-num">Урок 2 · 15&nbsp;мин</span><h3>Тарелка без&nbsp;голода + меню на&nbsp;3&nbsp;дня</h3><p>Как есть обычную еду и&nbsp;худеть. Правило «сладкое после еды», чтобы не&nbsp;срываться вечером.</p></div>
           </li>
           <li class="lesson">
             <div class="lesson-thumb"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=220&fit=crop&auto=format&q=60" width="150" height="110" loading="lazy" alt=""><span class="play" aria-hidden="true"></span></div>
-            <div><span class="lesson-num">Урок 3 · 20 мин</span><h3>Плоский живот: тренировка дома</h3><p>Повторяете за мной прямо в гостиной — без прыжков, бережно к спине и коленям.</p></div>
+            <div><span class="lesson-num">Урок 3 · 20&nbsp;мин</span><h3>Плоский живот: тренировка дома</h3><p>Повторяете за&nbsp;мной прямо в&nbsp;гостиной&nbsp;— без&nbsp;прыжков, бережно к&nbsp;спине и&nbsp;коленям.</p></div>
           </li>
         </ol>
-        <p class="lessons-gift">🎁 После 3-го урока — <b>бонус-эфир «Питание при гормональных сбоях»</b></p>
+        <p class="lessons-gift">🎁 После 3-го урока&nbsp;— <b>бонус-эфир «Питание при&nbsp;гормональных сбоях»</b></p>
       </div>
 
       <div class="form-card reveal d1" id="formCard">
         <form id="leadForm" novalidate>
-          <h3>Получите 3 бесплатных урока и узнайте подробнее о курсе</h3>
-          <p class="form-sub">Оставьте контакты — откроем доступ к урокам и расскажем, как устроена система. Без спама, отписаться можно в 1 клик.</p>
-          <div class="offer-pill"><span aria-hidden="true">▶️</span>Уроки открываются сразу — смотрите с телефона, когда удобно</div>
+          <h3>Получите 3 бесплатных урока и&nbsp;узнайте подробнее о&nbsp;курсе</h3>
+          <p class="form-sub">Оставьте контакты&nbsp;— откроем доступ к&nbsp;урокам и&nbsp;расскажем, как&nbsp;устроена система. Без спама, отписаться можно в&nbsp;1 клик.</p>
+          <div class="offer-pill"><span aria-hidden="true">▶️</span>Уроки открываются сразу&nbsp;— смотрите с&nbsp;телефона, когда удобно</div>
 
           <div class="field" id="fName">
             <label for="name">Ваше имя</label>
@@ -926,31 +934,30 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
             <div class="err" id="ePhone">Введите номер полностью: +7 (900) 000-00-00</div>
           </div>
           <fieldset>
-            <legend>Куда прислать доступ к урокам?</legend>
+            <legend>Куда прислать доступ к&nbsp;урокам?</legend>
             <div class="msgr">
               <input type="radio" name="messenger" id="mTg" value="Telegram" checked><label for="mTg"><svg style="color:#2AABEE"><use href="#i-tg"/></svg>Telegram</label>
-              <input type="radio" name="messenger" id="mWa" value="WhatsApp"><label for="mWa"><svg style="color:#25D366"><use href="#i-wa"/></svg>WhatsApp</label>
               <input type="radio" name="messenger" id="mVk" value="VK"><label for="mVk"><svg style="color:#0077FF"><use href="#i-vk"/></svg>VK</label>
             </div>
           </fieldset>
           <!-- honeypot от спам-ботов -->
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
           <div class="field" id="fConsent">
-            <label class="consent"><input type="checkbox" id="consent" name="consent" required>Я соглашаюсь на обработку персональных данных и принимаю <a href="privacy.html" target="_blank">политику конфиденциальности</a></label>
+            <label class="consent"><input type="checkbox" id="consent" name="consent" required>Я соглашаюсь на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="privacy.html" target="_blank">политику конфиденциальности</a></label>
             <div class="err">Нужно ваше согласие, чтобы отправить заявку</div>
           </div>
           <button type="submit" class="btn btn-primary btn-block btn-arrow" id="submitBtn">Получить бесплатные уроки</button>
-          <p class="form-safe">🔒 Данные защищены и не передаются третьим лицам</p>
+          <p class="form-safe">🔒 Данные защищены и&nbsp;не&nbsp;передаются третьим лицам</p>
         </form>
 
         <div class="thanks" role="status" aria-live="polite">
           <div class="thanks-ico" aria-hidden="true">💗</div>
           <h3>Спасибо, <span id="thName">красавица</span>!</h3>
-          <p>Заявка принята. Последний шаг — откройте уроки в нашем Telegram: первый урок придёт за 1 минуту, следующие — в течение 2 дней.</p>
+          <p>Заявка принята. Последний шаг&nbsp;— откройте уроки в&nbsp;нашем Telegram: первый урок придёт за&nbsp;1&nbsp;минуту, следующие&nbsp;— в&nbsp;течение 2&nbsp;дней.</p>
           <p style="margin-bottom:4px">Ваше кодовое слово:</p>
           <span class="code">ЛЁГКОСТЬ</span>
-          <a href="https://t.me/legkost_guide_bot?start=landing_guide" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-goal="thanks_bot"><svg><use href="#i-tg"/></svg>Открыть уроки в Telegram</a>
-          <p style="font-size:13px;margin-top:14px">Нет Telegram? Наш куратор напишет вам в выбранный мессенджер в течение дня.</p>
+          <a href="https://t.me/legkost_guide_bot?start=landing_guide" class="btn btn-primary btn-block" target="_blank" rel="noopener" data-goal="thanks_bot"><svg><use href="#i-tg"/></svg>Открыть уроки в&nbsp;Telegram</a>
+          <p style="font-size:13px;margin-top:14px">Нет Telegram? Наш куратор напишет вам в&nbsp;выбранный мессенджер в&nbsp;течение дня.</p>
         </div>
       </div>
     </div>
@@ -962,15 +969,15 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
   <div class="container">
     <div class="sec-head center reveal">
       <span class="eyebrow">Вопросы</span>
-      <h2 class="h2">Вы спрашиваете — <em>я отвечаю</em></h2>
+      <h2 class="h2">Вы спрашиваете&nbsp;— <em>я отвечаю</em></h2>
     </div>
     <div class="faq">
-      <details class="reveal"><summary>Мне за 45, у меня гормоны. Подойдёт?</summary><div class="ans"><p>Да. Около трети наших учениц — женщины 40+. Есть отдельный модуль: питание при гормональных изменениях, восстановление и мягкие силовые, которые помогают сохранить мышцы и обмен веществ.</p></div></details>
-      <details class="reveal"><summary>Я кормлю грудью / недавно родила. Можно?</summary><div class="ans"><p>Да, после разрешения врача. Для кормящих мам куратор адаптирует рацион — без жёсткого дефицита, который мог бы повлиять на лактацию. Тренировки — с учётом восстановления после родов.</p></div></details>
-      <details class="reveal"><summary>У меня совсем нет времени. Я справлюсь?</summary><div class="ans"><p>Тренировка — 20 минут, дневник питания — 5 минут. Рецепты готовятся до 20 минут и подходят всей семье, так что отдельно готовить «для себя» не нужно.</p></div></details>
-      <details class="reveal"><summary>Придётся отказаться от сладкого и хлеба?</summary><div class="ans"><p>Нет. В системе нет запрещённых продуктов. Мы учимся встраивать любимую еду так, чтобы она не мешала результату. Именно поэтому нет срывов.</p></div></details>
-      <details class="reveal"><summary>У меня больные колени / спина. Тренировки не навредят?</summary><div class="ans"><p>Тренировки без прыжков и ударной нагрузки. Для каждого упражнения есть облегчённый вариант. При заболеваниях проконсультируйтесь с врачом — куратор подберёт безопасный план.</p></div></details>
-      <details class="reveal"><summary>Что будет после того, как я оставлю заявку?</summary><div class="ans"><p>В Telegram сразу придёт первый бесплатный урок, затем ещё два, а после расскажет, как устроен курс, когда ближайший старт и сколько стоит участие. Никаких навязчивых звонков.</p></div></details>
+      <details class="reveal"><summary>Мне за&nbsp;45, у&nbsp;меня гормоны. Подойдёт?</summary><div class="ans"><p>Да. Около трети&nbsp;наших учениц&nbsp;— женщины 40+. Есть отдельный модуль: питание при&nbsp;гормональных изменениях, восстановление и&nbsp;мягкие силовые, которые помогают сохранить мышцы и&nbsp;обмен веществ.</p></div></details>
+      <details class="reveal"><summary>Я кормлю грудью / недавно родила. Можно?</summary><div class="ans"><p>Да, после разрешения врача. Для кормящих мам куратор адаптирует рацион&nbsp;— без&nbsp;жёсткого дефицита, который мог бы повлиять на&nbsp;лактацию. Тренировки&nbsp;— с&nbsp;учётом восстановления после родов.</p></div></details>
+      <details class="reveal"><summary>У меня совсем нет времени. Я справлюсь?</summary><div class="ans"><p>Тренировка&nbsp;— 20&nbsp;минут, дневник питания&nbsp;— 5&nbsp;минут. Рецепты готовятся до&nbsp;20&nbsp;минут и&nbsp;подходят всей семье, так что&nbsp;отдельно&nbsp;готовить «для себя» не&nbsp;нужно.</p></div></details>
+      <details class="reveal"><summary>Придётся отказаться от&nbsp;сладкого и&nbsp;хлеба?</summary><div class="ans"><p>Нет. В системе нет запрещённых продуктов. Мы учимся встраивать любимую еду так, чтобы она не&nbsp;мешала результату. Именно поэтому нет срывов.</p></div></details>
+      <details class="reveal"><summary>У меня больные колени / спина. Тренировки не&nbsp;навредят?</summary><div class="ans"><p>Тренировки без&nbsp;прыжков и&nbsp;ударной нагрузки. Для каждого упражнения есть облегчённый вариант. При&nbsp;заболеваниях проконсультируйтесь с&nbsp;врачом&nbsp;— куратор подберёт безопасный план.</p></div></details>
+      <details class="reveal"><summary>Что&nbsp;будет после того, как&nbsp;я оставлю заявку?</summary><div class="ans"><p>В Telegram сразу придёт первый бесплатный урок, затем ещё два, а&nbsp;после расскажет, как&nbsp;устроен курс, когда ближайший старт и&nbsp;сколько&nbsp;стоит участие. Никаких навязчивых звонков.</p></div></details>
     </div>
   </div>
 </section>
@@ -978,12 +985,11 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
 <!-- ============ 12. FINAL ============ -->
 <section class="final dark grain">
   <div class="container">
-    <span class="hand reveal" style="display:block;margin-bottom:12px">через 28 дней вы скажете себе спасибо</span>
-    <h2 class="reveal d1">Хватит начинать <span>с понедельника.</span> Начните с себя — сегодня</h2>
-    <p class="lead reveal d2">Посмотрите 3 бесплатных урока и узнайте, какая из 7 причин держит ваш вес. Первый урок — уже через минуту.</p>
+    <span class="hand reveal" style="display:block;margin-bottom:12px">через 28&nbsp;дней вы скажете себе спасибо</span>
+    <h2 class="reveal d1">Хватит начинать <span>с&nbsp;понедельника.</span> Начните с&nbsp;себя&nbsp;— сегодня</h2>
+    <p class="lead reveal d2">Посмотрите 3 бесплатных урока и&nbsp;узнайте, какая из&nbsp;7 причин держит ваш вес. Первый урок&nbsp;— уже&nbsp;через минуту.</p>
     <div class="final-ctas reveal d3">
-      <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_final">Получить 3 урока бесплатно</a>
-      <a href="https://wa.me/70000000000?text=%D0%9B%D0%81%D0%93%D0%9A%D0%9E%D0%A1%D0%A2%D0%AC" class="btn btn-ghost" target="_blank" rel="noopener" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg>Написать в WhatsApp</a>
+      <a href="#guide" class="btn btn-primary btn-arrow" data-goal="cta_final">Получить 3&nbsp;урока бесплатно</a>
     </div>
   </div>
 </section>
@@ -996,10 +1002,9 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
     <div class="footer-grid">
       <div>
         <a href="#top" class="logo" style="color:#fff"><span class="logo-mark"><svg><use href="#i-leaf"/></svg></span><span>ЛЁГКОСТЬ<small>система А. Ветровой</small></span></a>
-        <p style="margin-top:16px;max-width:320px">Онлайн-курс похудения для женщин без диет, голодовок и запретов. Питание, движение и образ жизни — в одной системе.</p>
+        <p style="margin-top:16px;max-width:320px">Онлайн-курс&nbsp;похудения для&nbsp;женщин без&nbsp;диет, голодовок и&nbsp;запретов. Питание, движение и&nbsp;образ жизни&nbsp;— в&nbsp;одной системе.</p>
         <div class="socials">
           <a href="https://t.me/legkost_vetrova" target="_blank" rel="noopener" aria-label="Telegram-канал" data-goal="messenger_tg"><svg><use href="#i-tg"/></svg></a>
-          <a href="https://wa.me/70000000000" target="_blank" rel="noopener" aria-label="WhatsApp" data-goal="messenger_wa"><svg><use href="#i-wa"/></svg></a>
           <a href="https://vk.com/legkost_online" target="_blank" rel="noopener" aria-label="ВКонтакте" data-goal="messenger_vk"><svg><use href="#i-vk"/></svg></a>
         </div>
       </div>
@@ -1019,14 +1024,14 @@ input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:tra
         <h4>Документы</h4>
         <ul>
           <li><a href="privacy.html">Политика конфиденциальности</a></li>
-          <li><a href="privacy.html#consent">Согласие на обработку ПДн</a></li>
+          <li><a href="privacy.html#consent">Согласие на&nbsp;обработку ПДн</a></li>
           <li><a href="#">Договор-оферта</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 «ЛЁГКОСТЬ». ИП Ветрова Алёна Сергеевна</span>
-      <span>Информация на сайте носит ознакомительный характер и не является медицинской услугой. Перед началом занятий проконсультируйтесь с врачом. Результаты индивидуальны и зависят от исходных данных и соблюдения рекомендаций.</span>
+      <span>Информация на&nbsp;сайте носит ознакомительный характер и&nbsp;не&nbsp;является медицинской услугой. Перед началом занятий проконсультируйтесь с&nbsp;врачом. Результаты индивидуальны и&nbsp;зависят от&nbsp;исходных данных и&nbsp;соблюдения рекомендаций.</span>
     </div>
   </div>
 </footer>

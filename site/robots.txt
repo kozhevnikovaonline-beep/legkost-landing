@@ -1,0 +1,14 @@
+# robots.txt — «ЛЁГКОСТЬ»
+# ВАЖНО: поисковики читают robots.txt только из корня домена.
+# На GitHub Pages (адрес вида user.github.io/legkost-landing/) этот файл не учитывается —
+# он заработает после переезда на свой домен. Тогда замените адрес в строке Sitemap.
+
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+Disallow: /404.html
+
+# Яндекс: не считать дублями страницы с рекламными метками
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid
+
+Sitemap: https://kozhevnikovaonline-beep.github.io/legkost-landing/sitemap.xml

@@ -243,3 +243,4 @@ node server/src/index.ts       # лучше через pm2 / systemd
 - После /start бот отправляет **фото с подписью и кнопкой** «▶️ Открыть 3 урока бесплатно» (Mini App). Текст — `WELCOME` в `server/src/bot.ts`, примерно 550 символов (лимит подписи — 1024). Если картинка недоступна, тот же текст уходит без фото.
 - Картинка поста — `miniapp/public/bot/bot-welcome.jpg`, 1280×720 (16:9, Telegram показывает её без обрезки). На сайте: `.../app/bot/bot-welcome.jpg`.
 - Аватарка бота — `miniapp/public/bot/bot-avatar.png`, 640×640: розовый шар с лепестком, как в тапалке. Загрузить: @BotFather → `/setuserpic` → выбрать бота → отправить картинку (лучше как фото, не файлом).
+- Description picture бота (экран «Что умеет этот бот?» до нажатия «Запустить») — `miniapp/public/bot/bot-description.jpg`, 640×360. Загрузить: @BotFather → `/mybots` → бот → Edit Bot → Edit Description Picture.

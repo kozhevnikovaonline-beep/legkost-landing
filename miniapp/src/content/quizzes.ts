@@ -20,7 +20,8 @@ export interface Quiz {
   id: "type" | "format";
   title: string;
   intro: string;
-  task: "quiz-type" | "quiz-format";
+  /** Задание, за которое начисляются лепестки (у теста на формат награды нет) */
+  task?: "quiz-type";
   questions: { q: string; options: QuizOption[] }[];
   results: QuizResult[];
 }
@@ -124,7 +125,6 @@ export const QUIZZES: Quiz[] = [
     id: "format",
     title: "Какой формат мне подходит",
     intro: "6 вопросов — и Алёна подскажет, в каком формате вы быстрее придёте к результату.",
-    task: "quiz-format",
     questions: [
       {
         q: "Какая у вас цель?",

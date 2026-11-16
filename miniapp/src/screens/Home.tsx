@@ -1,4 +1,4 @@
-import { DAILY_REWARDS, dailyStatus } from "../../shared/economy.ts";
+import { DAILY_REWARDS, dailyStatus, TASK_REWARDS } from "../../shared/economy.ts";
 import { BRAND } from "../content/brand";
 import { lessonById, LESSONS } from "../content/lessons";
 import { quizById } from "../content/quizzes";
@@ -26,19 +26,19 @@ export function Home() {
       <TopBar balance={s.game.balance} />
 
       <section className="hello">
-        <div className="muted small">{greeting()},</div>
-        <div className="hello__name">{getUser().first_name} 💗</div>
+        <span className="hello__greet">{greeting()},</span> <span className="hello__name">{getUser().first_name} 💗</span>
       </section>
 
       {/* Следующий урок / завершённый курс */}
       {nextLesson ? (
-        <div className="card mini-course" style={{ marginTop: 10 }}>
+        <div className="card card--ink grain mini-course has-hint" style={{ marginTop: 10 }}>
+          <Hint title="Бесплатный мини-курс" text="Три видеоурока от Алёны. Открываются по очереди: следующий — после того, как отметите предыдущий пройденным. За каждый урок — 300 лепестков, а после третьего откроется бонус-эфир про гормоны." />
           <div className="eyebrow">Бесплатный мини-курс</div>
           <h2 className="h2">
             3 урока <em>от Алёны</em>
           </h2>
           <p className="muted small" style={{ marginTop: 8, lineHeight: 1.5 }}>
-            Узнаете, почему вес стоит, соберёте сытную тарелку без подсчёта калорий и сделаете первую тренировку дома. За каждый урок — 300 лепестков.
+            Узнаете, почему вес стоит, соберёте сытную тарелку без подсчёта калорий и сделаете первую тренировку дома. За каждый урок — 300 лепестков.
           </p>
           <div className="mini-course__list">
             {LESSONS.map((l) => {
@@ -115,7 +115,9 @@ export function Home() {
       {/* Быстрые действия */}
       <section className="section stack">
         {tasks > 0 && (
-          <button className="card card--pressable row" style={{ textAlign: "left" }} onClick={() => navigate({ name: "tap" })}>
+          <div className="hint-wrap">
+          <Hint title="Награды ждут" text="Вы выполнили задания, но ещё не забрали за них лепестки. Нажмите — откроется вкладка «Лепестки», где награду можно забрать." />
+          <button className="card card--pressable row has-hint" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "tap" })}>
             <span className="task__icon">🎁</span>
             <div className="grow">
               <b>Награды ждут: {tasks}</b>
@@ -123,20 +125,25 @@ export function Home() {
             </div>
             <IconChevron width={18} />
           </button>
+          </div>
         )}
-        <button className="card card--fuchsia grain card--pressable row" style={{ textAlign: "left", padding: 18 }} onClick={() => navigate({ name: "quiz", id: "type" })}>
+        <div className="hint-wrap">
+        <Hint tone="light" title="Тест «Ваш тип набора веса»" text={`5 коротких вопросов покажут, почему у вас копится вес: отёки, стресс, гормоны или режим. В конце — советы Алёны и +${TASK_REWARDS["quiz-type"]} лепестков за первое прохождение.`} />
+        <button className="card card--fuchsia grain card--pressable row has-hint" style={{ textAlign: "left", padding: 18, width: "100%" }} onClick={() => navigate({ name: "quiz", id: "type" })}>
           <span className="task__icon">{typeRes?.emoji ?? "🧭"}</span>
           <div className="grow">
             <b className="h3">{typeRes ? `Ваш тип: ${typeRes.title.toLowerCase()}` : "Узнайте свой тип набора веса"}</b>
-            <div className="muted small" style={{ marginTop: 4 }}>{typeRes ? "Пройти ещё раз или посмотреть советы" : "5 вопросов · 1 минута · +500 лепестков"}</div>
+            <div className="muted small" style={{ marginTop: 4 }}>{typeRes ? "Пройти ещё раз или посмотреть советы" : `5 вопросов · 1 минута · +${TASK_REWARDS["quiz-type"]} лепестков`}</div>
           </div>
           <IconChevron width={20} />
         </button>
+        </div>
       </section>
 
       {/* Обмен лепестков */}
-      <section className="section">
-        <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "shop" })}>
+      <section className="section hint-wrap">
+        <Hint title="Обмен лепестков" text="Лепестки тратятся в Магазине: гайды открываются целиком за лепестки, а на курсы и программы дают скидку до 20% (1 лепесток = 1 ₽)." />
+        <button className="card card--pressable row has-hint" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "shop" })}>
           <Feather size="lg" />
           <div className="grow">
             <b>Обменяйте лепестки на гайды</b>
@@ -147,8 +154,9 @@ export function Home() {
       </section>
 
       {/* Автор */}
-      <section className="section">
-        <button className="card card--pressable row" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "author" })}>
+      <section className="section hint-wrap">
+        <Hint title="Автор системы" text="Познакомьтесь с Алёной: её история, опыт и подход «за лёгкость, а не за диеты». Нажмите, чтобы открыть страницу автора." />
+        <button className="card card--pressable row has-hint" style={{ textAlign: "left", width: "100%" }} onClick={() => navigate({ name: "author" })}>
           <Img src={BRAND.authorPhoto} alt={BRAND.author} className="avatar" />
           <div className="grow">
             <div className="eyebrow" style={{ marginBottom: 6 }}>Автор системы</div>

@@ -37,7 +37,7 @@ export function Quiz({ id }: { id: string }) {
     const r = scoreQuiz(quiz, next);
     setBusy(true);
     const ok = await appStore.run({ type: "quiz", id: quiz.id, result: r.id });
-    if (ok && !s.progress.tasksClaimed.includes(quiz.task)) {
+    if (ok && quiz.task && !s.progress.tasksClaimed.includes(quiz.task)) {
       await appStore.run({ type: "task", id: quiz.task }, (rw) => `+${rw} лепестков за тест`);
     }
     setBusy(false);
@@ -105,7 +105,7 @@ export function Quiz({ id }: { id: string }) {
       {step === 0 && (
         <div className="card" style={{ marginBottom: 16 }}>
           <p>{quiz.intro}</p>
-          {!s.progress.tasksClaimed.includes(quiz.task) && <span className="chip" style={{ marginTop: 10 }}>+{TASK_REWARDS[quiz.task]} лепестков за прохождение</span>}
+          {quiz.task && !s.progress.tasksClaimed.includes(quiz.task) && <span className="chip" style={{ marginTop: 10 }}>+{TASK_REWARDS[quiz.task]} лепестков за прохождение</span>}
         </div>
       )}
       <div className="row" style={{ justifyContent: "space-between", marginBottom: 8 }}>

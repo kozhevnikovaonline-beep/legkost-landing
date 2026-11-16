@@ -54,8 +54,7 @@ export function Lesson({ id }: { id: string }) {
       haptic.success();
       toast.success(`Урок ${lesson.number} пройден! +${reward} лепестков`);
       if (lesson.number === LESSONS.length) {
-        const r = await appStore.dispatch({ type: "task", id: "all-lessons" });
-        toast.success(`Мини-курс пройден! +${r.reward} лепестков и бонус-эфир 🎁`);
+        toast.success("Мини-курс пройден! Бонус-эфир про гормоны открыт 🎁");
         navigate({ name: "next" }, { replace: true });
       } else if (next) {
         navigate({ name: "lesson", id: next.id }, { replace: true });

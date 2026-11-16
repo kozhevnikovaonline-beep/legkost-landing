@@ -37,15 +37,13 @@ export const DAILY_REWARDS = [100, 150, 200, 250, 300, 350, 400] as const;
 /** Задания и награды. Тексты — в src/content/tasks.ts */
 export const TASK_REWARDS = {
   welcome: 500,
-  notifications: 300,
+  notifications: 200,
   "lesson-1": 300,
   "lesson-2": 300,
   "lesson-3": 300,
-  "all-lessons": 1500,
-  "quiz-type": 500,
-  "quiz-format": 500,
-  channel: 700,
-  "first-guide": 300,
+  "quiz-type": 300,
+  channel: 500,
+  "first-guide": 200,
 } as const;
 export type TaskId = keyof typeof TASK_REWARDS;
 export const REFERRAL_REWARD = 2000;
@@ -189,12 +187,8 @@ export function isTaskEligible(task: TaskId, p: ProgressState): boolean {
     case "lesson-2":
     case "lesson-3":
       return p.lessonsCompleted.includes(task);
-    case "all-lessons":
-      return ["lesson-1", "lesson-2", "lesson-3"].every((l) => p.lessonsCompleted.includes(l));
     case "quiz-type":
       return Boolean(p.quizResults["type"]);
-    case "quiz-format":
-      return Boolean(p.quizResults["format"]);
     case "first-guide":
       return p.owned.some((id) => id.startsWith("guide-"));
     case "welcome":

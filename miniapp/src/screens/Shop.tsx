@@ -59,11 +59,11 @@ export function Shop() {
         </section>
       )}
       {!formatRes && filter !== "guides" && (
-        <button className="card card--lime card--pressable row" style={{ textAlign: "left", width: "100%", marginTop: 16, padding: 18 }} onClick={() => navigate({ name: "quiz", id: "format" })}>
+        <button className="card card--ink grain card--pressable row" style={{ textAlign: "left", width: "100%", marginTop: 16, padding: 18 }} onClick={() => navigate({ name: "quiz", id: "format" })}>
           <span className="task__icon">🎯</span>
           <div className="grow">
             <b className="h3">Не знаете, что выбрать?</b>
-            <div className="muted small" style={{ marginTop: 2 }}>6 вопросов — и Алёна подскажет формат · +500 лепестков</div>
+            <div className="muted small" style={{ marginTop: 2 }}>6 вопросов — и Алёна подскажет формат</div>
           </div>
           <IconChevron width={20} />
         </button>

@@ -91,11 +91,11 @@ export function Lessons() {
       </div>
 
       <section className="section">
-        <button className="card card--lime card--pressable row" style={{ textAlign: "left", width: "100%", padding: 18 }} onClick={() => navigate({ name: "shop" })}>
+        <button className="card card--ink grain card--pressable row" style={{ textAlign: "left", width: "100%", padding: 18 }} onClick={() => navigate({ name: "shop" })}>
           <span className="task__icon">🛍️</span>
           <div className="grow">
             <b className="h3" style={{ display: "block" }}>Другие курсы</b>
-            <div className="small" style={{ marginTop: 4, opacity: 0.75 }}>Программы, марафоны и гайды Алёны — в Магазине</div>
+            <div className="muted small" style={{ marginTop: 4 }}>Программы, марафоны и гайды Алёны — в Магазине</div>
           </div>
           <IconChevron width={20} />
         </button>

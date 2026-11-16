@@ -25,14 +25,33 @@ export class TelegramApi {
   }
 }
 
-const WELCOME = (name: string) =>
-  `Привет, ${name}! 💗 Я Алёна Ветрова.\n\n` +
-  `Как обещала — открываю тебе <b>3 бесплатных урока</b>:\n` +
-  `▶️ Урок 1. Почему вес стоит: 7 скрытых причин\n` +
-  `🍽 Урок 2. Тарелка без голода + меню на 3 дня\n` +
-  `💪 Урок 3. Плоский живот: тренировка дома\n\n` +
-  `🎁 Внутри ещё гайд «Тарелка», чек-лист отёков и бонус-эфир про гормоны.\n` +
-  `А пока смотришь — копи <b>лепестки</b> и обменивай их на гайды 🌸`;
+/** Приветственный пост после /start: фото + подпись (до 1024 символов) + кнопка Mini App */
+export const WELCOME = (name: string) =>
+  `Привет, ${name}! 💗 Я Алёна Ветрова.
+
+` +
+  `Если вы едите немного, а вес стоит неделями — дело не в силе воли. Просто тело включило «режим экономии». ` +
+  `За 3 коротких урока я покажу, как его выключить — <b>без диет, голодовок и зала</b>.
+
+` +
+  `<b>Что вас ждёт — бесплатно:</b>
+` +
+  `▶️ Почему вес стоит: 7 скрытых причин
+` +
+  `🍽 Тарелка без голода + меню на 3 дня
+` +
+  `💪 Плоский живот: тренировка дома за 20 минут
+
+` +
+  `🎁 Плюс чек-листы и бонус-эфир про гормоны после 3-го урока.
+` +
+  `🌸 За каждый урок — лепестки, их можно обменять на мои гайды.
+
+` +
+  `Уроки уже ждут вас в приложении — нажмите кнопку ниже 👇`;
+
+/** Картинка поста (1280×720) лежит рядом с приложением: public/bot/bot-welcome.jpg */
+export const welcomePhotoUrl = (webAppUrl: string) => new URL("bot/bot-welcome.jpg", webAppUrl).toString();
 
 function escapeHtml(s: string) {
   return s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]!);
@@ -98,16 +117,16 @@ export async function handleUpdate(update: Json, api: TelegramApi, db: Db, webAp
   if (text.startsWith("/start")) {
     const payload = text.split(" ")[1]?.slice(0, 64);
     const name = escapeHtml(String(from?.first_name ?? "красавица"));
-    await api.call("sendMessage", {
-      chat_id: chatId,
-      parse_mode: "HTML",
-      text: WELCOME(name),
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: "▶️ Открыть 3 урока бесплатно", web_app: { url: appUrl(webAppUrl, payload && /^[a-z0-9_-]+$/i.test(payload) ? payload : undefined) } }],
-        ],
-      },
-    });
+    const reply_markup = {
+      inline_keyboard: [[{ text: "▶️ Открыть 3 урока бесплатно", web_app: { url: appUrl(webAppUrl, payload && /^[a-z0-9_-]+$/i.test(payload) ? payload : undefined) } }]],
+    };
+    try {
+      await api.call("sendPhoto", { chat_id: chatId, photo: welcomePhotoUrl(webAppUrl), caption: WELCOME(name), parse_mode: "HTML", reply_markup });
+    } catch (e) {
+      // Картинка недоступна — отправляем тот же текст без фото
+      console.error("[bot] sendPhoto", (e as Error).message);
+      await api.call("sendMessage", { chat_id: chatId, parse_mode: "HTML", text: WELCOME(name), reply_markup });
+    }
     return;
   }
 

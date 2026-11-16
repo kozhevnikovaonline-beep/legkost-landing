@@ -511,3 +511,19 @@ h1,h2,h3,p{margin:0}
 .hint-wrap>.hint-btn{top:10px;right:10px}
 .hello{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px}
 .hello__greet{font-size:15px;color:var(--text-2)}
+/* Скрытое меню «≡» на экранах без нижней панели */
+.subbar{position:relative;z-index:30}
+.navmenu{position:relative;flex:none}
+.burger{display:grid;gap:4px;width:18px}
+.burger i{display:block;height:2px;border-radius:2px;background:currentColor;transition:transform .2s var(--ease),opacity .2s}
+.burger--open i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger--open i:nth-child(2){opacity:0}
+.burger--open i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.navmenu__btn[aria-expanded="true"]{background:var(--pink-btn);color:#fff;border-color:var(--pink-btn)}
+.navmenu__list{position:absolute;top:calc(100% + 8px);right:0;z-index:60;min-width:200px;padding:6px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 24px 50px -16px rgba(14,11,15,.35);display:grid;gap:2px;animation:screenIn .18s var(--ease)}
+.navmenu__item{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-weight:700;font-size:15px;text-align:left;color:var(--text)}
+.navmenu__item:active,.navmenu__item:hover{background:var(--accent-soft)}
+.navmenu__icon{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--card-2);color:var(--text-2);flex:none}
+.navmenu__icon svg{width:18px;height:18px}
+.navmenu__item--accent .navmenu__icon{background:radial-gradient(circle at 30% 30%,var(--pink-2),var(--pink-btn));color:#fff}
+[data-theme="dark"] .navmenu__list{background:#1E1620}

@@ -6,6 +6,7 @@ import { useBackButton } from "../telegram/hooks";
 import { haptic } from "../telegram/sdk";
 import { FeatherGlyph, IconBack } from "./Icons";
 import { BRAND } from "../content/brand";
+import { NavMenu } from "./NavMenu";
 
 export function Feather({ size }: { size?: "lg" }) {
   return (
@@ -58,6 +59,7 @@ export function SubBar({ title, right }: { title: string; right?: ReactNode }) {
       </button>
       <h1 className="subbar__title">{title}</h1>
       {right}
+      <NavMenu />
     </header>
   );
 }
